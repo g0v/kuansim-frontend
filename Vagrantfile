@@ -80,7 +80,9 @@ Vagrant.configure("2") do |config|
    chef.add_recipe 'git'
    chef.add_recipe 'nodejs'
    chef.add_recipe 'postgresql'
+   chef.add_recipe 'postgresql::apt_repository'
    chef.add_recipe 'postgresql::server'
+   chef.add_recipe 'postgresql::server_dev'
    chef.add_recipe 'pgrest'
 
    # You may also specify custom JSON attributes:
