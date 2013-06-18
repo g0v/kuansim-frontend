@@ -1,9 +1,0 @@
-description     "kuansim"
-
-start on (startup
-          and filesystem)
-task
-script
-    exec pgrest --db tcp://kuansim:password@localhost/kuansim
-end script
-
