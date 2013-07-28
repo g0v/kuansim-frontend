@@ -13,7 +13,7 @@ engines:
 scripts:
   prepublish: './node_modules/.bin/lsc -cj package.ls'
   start: './node_modules/.bin/brunch watch --server'
-  test: 'karma test/karma.config.js'
+  test: 'karma start test/karma.conf.js'
 dependencies: {}
 devDependencies:
   karma: '>= 0.8.4'
