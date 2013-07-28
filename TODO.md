@@ -7,5 +7,5 @@
     mypackage/
       controllers.coffee
       controllers_test.coffee
-  - Adapt testacular to read coffeescript directly
+  - Adapt karma to read coffeescript directly
   - Integrate with Brunch's test suite.

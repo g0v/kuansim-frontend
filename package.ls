@@ -13,10 +13,10 @@ engines:
 scripts:
   prepublish: './node_modules/.bin/lsc -cj package.ls'
   start: './node_modules/.bin/brunch watch --server'
-  test: 'testacular test/testacular.config.js'
+  test: 'karma test/karma.config.js'
 dependencies: {}
 devDependencies:
-  testacular: '>= 0.0.16'
+  karma: '>= 0.8.4'
   LiveScript: '>= 1.1.1'
   brunch: '1.5.x'
   'javascript-brunch': '1.5.x'
