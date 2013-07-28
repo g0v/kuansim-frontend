@@ -1,4 +1,5 @@
-[![Build Status](NOTE: Use something like Travis CI http://about.travis-ci.org/docs/user/getting-started/)
+[![Build Status](https://travis-ci.org/g0v/kuansim.png?branch=master)](https://travis-ci.org/g0v/kuansim)
+
 
 # Kuansim
 
