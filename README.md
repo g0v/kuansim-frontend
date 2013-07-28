@@ -8,7 +8,7 @@ A society issues tracking system
 
 # Import fake data
 
-check out fake data 
+check out fake data
 
 ```
 $ make checkout
@@ -17,7 +17,13 @@ $ make checkout
 import to pgrest.
 
 ```
-$ make import 
+$ make import
+```
+
+# Start the server
+```
+$ npm i
+$ ./script/server.sh
 ```
 
 # See also
