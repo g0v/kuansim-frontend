@@ -10,3 +10,4 @@ notifications:
     - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
     rooms:
     - secure: "VBUhGjzMjThDV3T4dLYBUamZ4JBxZbBerwiV0RbtYQ9ja+IjLZojBWS2vsdGddwyvgbVcC0K1/x93gPaVS/JWLlMnn+tqJ0TLMEJ5P2ExHQzI/8CT45ehcCMOp4Mbk9MlHKw6OVGVyfl6gZZnqPTDe7PV4MMFX15Eznmwk8rmPs="
+  irc: "chat.freenode.net#kuansim"
