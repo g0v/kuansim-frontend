@@ -9,7 +9,7 @@ description_zh: '追蹤各議題狀態以做決策'
 document: 'http://hack.g0v.tw/kuansim'
 repository:
   type: 'git'
-  url: 'https://github.com/g0v/kuansim'
+  url: 'https://github.com/g0v/kuansim-frontend'
 licenses: [
   "type": "BSD"
 ]
