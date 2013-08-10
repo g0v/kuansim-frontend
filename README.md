@@ -9,7 +9,7 @@ See [git-flow cheatsheet](http://danielkummer.github.io/git-flow-cheatsheet/)
 
 *   All new code shall be push to `develop` branch
 *   Release manager will merge `develop` to `master`
- 
+
 # Import fake data
 
 check out fake data
@@ -31,6 +31,6 @@ $ ./script/server.sh
 ```
 
 # See also
-
+- [Brunch structure README](https://github.com/g0v/kuansim-frontend/blob/master/README_brunch.md)
 - Project site: http://hack.g0v.tw/kuansim
 - Bug report or feedback here
