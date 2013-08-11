@@ -10,9 +10,9 @@ engines:
   node: '0.8.x'
   npm: '1.1.x'
 scripts:
-  prepublish: './node_modules/.bin/lsc -c package.json.ls'
+  prepublish: './node_modules/.bin/lsc -c package.json.ls karma.conf.js.ls'
   start: './node_modules/.bin/brunch watch --server'
-  test: 'karma start test/karma.conf.js'
+  test: 'karma start'
 dependencies: {}
 devDependencies:
   karma: '>= 0.8.4'
