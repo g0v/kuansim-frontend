@@ -1,10 +1,10 @@
 module.exports = (config) ->
   config.set do
 
-    basePath: \.
+    basePath: \./
 
     frameworks:
-      * \jasmine
+      * \mocha
         ...
 
     files:
