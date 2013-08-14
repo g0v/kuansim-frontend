@@ -17,7 +17,7 @@ scripts:
 dependencies: {}
 devDependencies:
   karma: '>= 0.8.4'
-  LiveScript: '>= 1.1.1'
+  LiveScript: \>=1.2.0
   brunch: '1.5.x'
   'javascript-brunch': '1.5.x'
   'LiveScript-brunch': '1.5.x'
