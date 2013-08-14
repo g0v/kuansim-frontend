@@ -3,12 +3,15 @@ module.exports = (config) ->
 
     basePath: \./
 
+    preprocessors:
+      * \**/*.ls : [ \live ]
+
     frameworks:
       * \mocha
         ...
 
     files:
-      * \test/unit/app/*.js
+      * \test/unit/app/*.ls
         ...
 
     exclude:
