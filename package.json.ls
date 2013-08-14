@@ -1,4 +1,3 @@
-#!/usr/bin/env lsc -cj
 author: 'Chia-liang Kao'
 name: 'angular-brunch-seed-livescript'
 description: 'AngularJS + Brunch + LiveScript'
@@ -11,7 +10,7 @@ engines:
   node: '0.8.x'
   npm: '1.1.x'
 scripts:
-  prepublish: './node_modules/.bin/lsc -cj package.ls'
+  prepublish: './node_modules/.bin/lsc -c package.json.ls'
   start: './node_modules/.bin/brunch watch --server'
   test: 'karma start test/karma.conf.js'
 dependencies: {}

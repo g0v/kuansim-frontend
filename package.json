@@ -13,7 +13,7 @@
     "npm": "1.1.x"
   },
   "scripts": {
-    "prepublish": "./node_modules/.bin/lsc -cj package.ls",
+    "prepublish": "./node_modules/.bin/lsc -c package.json.ls",
     "start": "./node_modules/.bin/brunch watch --server",
     "test": "karma start test/karma.conf.js"
   },
