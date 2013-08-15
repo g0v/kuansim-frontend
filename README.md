@@ -1,6 +1,6 @@
 # Kuansim-frontend
-
-[![Build Status](https://travis-ci.org/g0v/kuansim.png?branch=master)](https://travis-ci.org/g0v/kuansim)
+*   master [![Build Status](https://travis-ci.org/g0v/kuansim-frontend.png?branch=master)](https://travis-ci.org/g0v/kuansim-frontend)
+*   develop [![Build Status](https://travis-ci.org/g0v/kuansim-frontend.png?branch=develop)](https://travis-ci.org/g0v/kuansim-frontend)
 
 - [How to join](https://g0v.hackpad.com/--1OaXIxVVPSd)
 
