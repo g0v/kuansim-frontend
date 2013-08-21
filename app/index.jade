@@ -23,17 +23,21 @@ html(lang='en')
     script(src='/js/app.js')
   body(ng-controller='AppCtrl')
     .wrapper
-      .navbar
-        .navbar-inner
+      nav.navbar.navbar-inverse(role='navigation')
+        .navbar-header
           .container
-            a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+             button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+              span.sr-only
+                | Toggle navigation
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            .brand
-              a(href='/') Angular Brunch Seed
-            .nav-collapse
-              div(ng-include="'/partials/app/nav.html'")
+            a.navbar-brand(href='#')
+              span.glyphicon.glyphicon-heart
+              |  鄉民關心你
+        //- Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          div(ng-include="'/partials/app/nav.html'")
       .container.main-content
         div(ng-view)
         div Angular Brunch seed app: v<span app-version></span>
