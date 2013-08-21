@@ -3,10 +3,11 @@ App = angular.module \app <[ngCookies ngResource app.controllers app.directives 
 
 App.config <[$routeProvider $locationProvider]> ++ ($routeProvider, $locationProvider, config) ->
   $routeProvider
-    .when \/view1 templateUrl: \/partials/app/partial1.html
-    .when \/view2 templateUrl: \/partials/app/partial2.html
+    .when \/collect templateUrl: \/partials/app/collect.html
+    .when \/edit templateUrl: \/partials/app/edit.html
+    .when \/publish templateUrl: \/partials/app/publish.html
     # Catch all
-    .otherwise redirectTo: \/view1
+    .otherwise redirectTo: \/
 
   # Without serve side support html5 must be disabled.
   $locationProvider.html5Mode false
