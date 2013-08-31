@@ -1,7 +1,10 @@
 ul.nav.navbar-nav
-  li(ng-class="getClass('/collect')")
-    a(ng-href='#/collect') 收集
-  li(ng-class="getClass('/edit')")
-    a(ng-href='#/edit') 編輯
-  li(ng-class="getClass('/publish')")
-    a(ng-href='#/publish') 發佈
+  li(ng-class="getClass('/issue')")
+    a(ng-href='#/issue') 議題
+  li(ng-class="getClass('/act')")
+    a(ng-href='#/act') 串連
+  li(ng-class="getClass('/about')")
+    a(ng-href='#/about') 關於
+ul.nav.navbar-nav.navbar-right
+  li(ng-class="getClass('/login')")
+    a(href='#/login') 登入

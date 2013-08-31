@@ -6,6 +6,9 @@ App.config <[$routeProvider $locationProvider]> ++ ($routeProvider, $locationPro
     .when \/collect templateUrl: \/partials/app/collect.html
     .when \/edit templateUrl: \/partials/app/edit.html
     .when \/publish templateUrl: \/partials/app/publish.html
+    .when \/issue templateUrl: \/partials/app/issue.html
+    .when \/act templateUrl: \/partials/app/act.html
+    .when \/about templateUrl: \/partials/app/about.html
     .when \/ templateUrl: \/partials/app/portal.html
     # Catch all
     .otherwise redirectTo: \/
