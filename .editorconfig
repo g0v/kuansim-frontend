@@ -12,3 +12,9 @@ trim_trailing_whitespace = true
 [*.ls]
 ; See https://github.com/gkz/LiveScript-style-guide
 indent_size = 2
+
+[*.jade]
+indent_size = 2
+
+[*.scss]
+indent_size  = 2
