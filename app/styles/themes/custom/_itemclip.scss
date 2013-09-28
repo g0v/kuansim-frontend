@@ -1,0 +1,20 @@
+.item {
+	width: 280px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	margin: 15px;
+	padding: 20px 10px 10px;
+	vertical-align: top;
+	position: relative;
+	.item-type { position: absolute; top: 6px; left: -10px; background-color: #555; color:#fff ; padding: 1px 15px 1px 10px; border: 1px dotted #ccc}
+	.title {
+		font-size: 18px;
+		margin: 15px 0 7px;
+	 }
+	.event-date { text-align: right; color: #aaa; font-weight: normal;}
+	.tags {
+		margin: 10px 0;
+		a { margin-right: 10px; }
+	}
+	.extend-button { text-align: center; margin: 15px 0  0}
+}
