@@ -9,12 +9,6 @@ form.navbar-form.navbar-left(role="search")
     input.form-control(type="text", placeholder="Search")
 
 ul.nav.navbar-nav.navbar-right
-  li
-    form#custom-search-form.form-search.form-horizontal
-      .input-append
-        input.search-query(type='text', placeholder='Search')
-        button.btn(type='submit')
-          i.glyphicon.glyphicon-search
   li(ng-class="getClass('/about')")
     a(ng-href='#/about') 關於
   li(ng-class="getClass('/login')")
