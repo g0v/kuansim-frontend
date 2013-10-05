@@ -1,6 +1,6 @@
-mod = {}
 
-mod.AppCtrl = <[$scope $location $resource $rootScope]> ++ (s, $location, $resource, $rootScope) ->
+angular.module \app.controllers, []
+.controller AppCtrl: <[$scope $location $resource $rootScope]> ++ (s, $location, $resource, $rootScope) ->
 
   # Uses the url to determine if the selected
   # menu item should have the class active.
@@ -22,10 +22,9 @@ mod.AppCtrl = <[$scope $location $resource $rootScope]> ++ (s, $location, $resou
     else
       ''
 
-mod.MyCtrl1 = <[$scope]> ++ (s) ->
+.controller MyCtrl1: <[$scope]> ++ (s) ->
   s.Title = "MyCtrl1"
 
-mod.MyCtrl2 = <[$scope]> ++ (s) ->
+.controller MyCtrl2: <[$scope]> ++ (s) ->
   s.Title = "MyCtrl2"
 
-angular.module 'app.controllers' [] .controller mod
