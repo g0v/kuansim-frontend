@@ -4,6 +4,7 @@ angular.module \app.controllers, []
 
   # Uses the url to determine if the selected
   # menu item should have the class active.
+
   s <<< {$location}
   s.$watch '$location.path()' (activeNavId or '/') ->
     s <<< {activeNavId}
@@ -28,3 +29,8 @@ angular.module \app.controllers, []
 .controller MyCtrl2: <[$scope]> ++ (s) ->
   s.Title = "MyCtrl2"
 
+.controller IndexCtrl: <[$scope getIssues getDigests getPetitions getActions]> ++ (s, getIssues, getDigests, getPetitions, getActions) ->
+  s.topIssues = getIssues
+  s.topDigests = getDigests
+  s.topPetitions = getPetitions
+  s.topActions = getActions

@@ -1,34 +1,15 @@
 img.img-responsive(src="img/banner.jpg")
 
-h3 熱門議題
-div.row
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-h3 最新懶人包
-div.row
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-h3 正在串連
-div.row
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-h3 正在醞釀
-div.row
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
-  div.col-md-4
-    div(ng-include="'/partials/app/tagUnit.html'")
+div(ng-controller='IndexCtrl')
+  h3 熱門議題
+  div.row
+    div.col-md-4(ng-repeat='content in topIssues', ng-include="'/partials/app/tagUnit.html'")
+  h3 最新懶人包
+  div.row
+    div.col-md-4(ng-repeat='content in topDigests', ng-include="'/partials/app/tagUnit.html'")
+  h3 正在串連
+  div.row
+    div.col-md-4(ng-repeat='content in topPetitions', ng-include="'/partials/app/tagUnit.html'")
+  h3 正在醞釀
+  div.row
+    div.col-md-4(ng-repeat='content in topActions', ng-include="'/partials/app/tagUnit.html'")

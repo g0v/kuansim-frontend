@@ -2,13 +2,13 @@ div.panel.panel-success.tagWrapper
   div.tagHeader.panel-heading
     a.tagName(href='#')
       span.glyphicon.glyphicon-tag
-      | topic
+      | {{content.title}}
   div.panel-body
-    div.contentWrapper
-      p
-        | test
-      p
-        | test2
+    div.contentWrapper(ng-switch="content.type")
+      div(ng-switch-when="issue", ng-include="'/partials/app/issue_box.html'")
+      div(ng-switch-when="digest", ng-include="'/partials/app/digest_box.html'")
+      div(ng-switch-when="petition", ng-include="'/partials/app/petition_box.html'")
+      div(ng-switch-when="action", ng-include="'/partials/app/action_box.html'")
   div.panel-footer
     div.text-right
       ul.list-inline
