@@ -1,8 +1,8 @@
 {
-  "author": "Josh David Miller",
-  "name": "ng-boilerplate",
-  "version": "0.3.1",
-  "homepage": "http://bit.ly/ng-boilerplate",
+  "author": "Rae Liu",
+  "name": "kuansim-frontend",
+  "version": "0.0.1",
+  "homepage": "http://kuansim.herokuapp.com",
   "licenses": {
     "type": "MIT",
     "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
@@ -10,7 +10,7 @@
   "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:joshdmiller/ng-boilerplate.git"
+    "url": "git@github.com:g0v/kuansim-frontend.git"
   },
   "dependencies": {},
   "devDependencies": {
@@ -25,8 +25,6 @@
     "grunt-karma": "~0.5.0",
     "grunt-ngmin": "0.0.2",
     "grunt-html2js": "~0.1.3",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-coffeelint": "0.0.6",
     "grunt-conventional-changelog": "~0.1.1",
     "grunt-bump": "0.0.6"
   }

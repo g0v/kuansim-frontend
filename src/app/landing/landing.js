@@ -12,7 +12,7 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'kuansim.home', [
+angular.module( 'kuansim.landing', [
 ])
 
 /**
@@ -24,7 +24,8 @@ angular.module( 'kuansim.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller('LandingCtrl', function LandingCtrl($scope) {
+
 })
 
 ;

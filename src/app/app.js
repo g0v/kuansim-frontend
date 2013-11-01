@@ -1,25 +1,25 @@
-angular.module( 'ngBoilerplate', [
+angular.module('kuansim', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
-  'ui.state',
-  'ui.route'
+  'kuansim.landing',
+  'kuansim.about',
+  'ui.router'
 ])
-
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+.config(function ($stateProvider) {
+  $stateProvider
+    .state('landingPage', {
+      url: '/',
+      templateUrl: 'home/home.tpl.html',
+      controller: 'LandingCtrl',
+      title: 'Kuansim'
+    })
+    ;
 })
-
-.run( function run () {
+.run(function ($rootScope, $state) {
+  $rootScope.state = $state;
 })
-
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate' ;
-    }
-  });
+.controller('AppCtrl', function AppCtrl($scope, $location) {
+  console.log($scope);
 })
 
 ;
