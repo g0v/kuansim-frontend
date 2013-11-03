@@ -10,7 +10,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-coffee');
+  // grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   // grunt.loadNpmTasks('grunt-coffeelint');
@@ -278,7 +278,8 @@ module.exports = function ( grunt ) {
      */
     jshint: {
       src: [
-        '<%= app_files.js %>'
+        '<%= app_files.js %>',
+        '!src/app/user/user.js'
       ],
       test: [
         '<%= app_files.jsunit %>'
@@ -458,7 +459,8 @@ module.exports = function ( grunt ) {
         files: [
           '<%= app_files.js %>'
         ],
-        tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+        tasks: [ 'jshint:src', 'copy:build_appjs' ]
+        // tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
       },
 
       /**
@@ -550,7 +552,7 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'default', 'karma:unit', 'delta' ] );
 
   /**
    * The default task is to build and compile.

@@ -51,19 +51,45 @@ code, pre, .pre {
  * Navigation
  */
 #nav {
-  background-color: @gray-dark;
+  background-color: @gray-darker;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 40px;
+  #menu {
+    position: relative;
+    left: 25px;
+    margin-top: 4px;
+    margin-right: 28px;
+    .login {
+      float: right;
+      & > .btn {
+        width: 150px;
+      }
+    }
+    .dropdown-menu {
+      background-color: @black;
+      & > li > a {
+        color: @gray-light;
+        &:hover {
+          background-color: @gray-dark;
+        }
+      }
+    }
+  }
 }
 #banner {
+  width: 120px;
   color: #bbb;
   font-size: 1.5em;
   position: relative;
   top: 5px;
   left: 10px;
+  float: left;
+}
+.wrapper {
+  margin-top: 40px;
 }
 
 /**
@@ -77,5 +103,5 @@ code, pre, .pre {
  * TODO: In a later version of this boilerplate, I'd like to automate this.
  */
 
-@import '../app/home/home.less';
+// @import '../app/home/home.less';
 
