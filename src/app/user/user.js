@@ -1,6 +1,8 @@
 angular.module('kuansim.user', [
 ])
-
+.factory('User', function () {
+  return {};
+})
 .factory('OAuth', function () {
   (function() {
     "use strict";
