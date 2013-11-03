@@ -16,15 +16,20 @@ module.exports = {
    * build tasks. `js` is all project javascript, less tests. `ctpl` contains
    * our reusable components' (`src/common`) template HTML files, while
    * `atpl` contains the same, but for our app's code. `html` is just our
-   * main HTML file, `less` is our main stylesheet, and `unit` contains our
-   * app's unit tests.
+   * main HTML file, `less` is our main stylesheet, `unit` contains our
+   * app's unit tests, `fixture` contains $http data fixtures, and `scenario`
+   * contains our app's e2e tests.
    */
   app_files: {
-    js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+    js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js', '!src/**/*.fixture.js', '!src/**/*.scenario.js' ],
     jsunit: [ 'src/**/*.spec.js' ],
+    jsfixture: [ 'src/**/*.fixture.js' ],
+    jsscenario: [ 'src/**/*.scenario.js' ],
 
-    coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
+    coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee', '!src/**/*.fixture.coffee', '!src/**/*.scenario.coffee' ],
     coffeeunit: [ 'src/**/*.spec.coffee' ],
+    coffeefixture: [ 'src/**/*.fixture.coffee' ],
+    coffeescenario: [ 'src/**/*.scenario.coffee' ],
 
     atpl: [ 'src/app/**/*.tpl.html' ],
     ctpl: [ 'src/common/**/*.tpl.html' ],
@@ -56,6 +61,9 @@ module.exports = {
    * The `vendor_files.css` property holds any CSS files to be automatically
    * included in our app.
    *
+   * The `vendor_files.dev` property holds any JS files to be included for
+   * development only.
+   *
    * The `vendor_files.assets` property holds any assets to be copied along
    * with our app's assets. This structure is flattened, so it is not
    * recommended that you use wildcards.
@@ -68,6 +76,9 @@ module.exports = {
       'vendor/angular-ui-router/release/angular-ui-router.js'
     ],
     css: [
+    ],
+    dev: [
+      'vendor/angular-mocks/angular-mocks.js'
     ],
     assets: [
     ]
