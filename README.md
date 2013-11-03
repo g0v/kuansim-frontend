@@ -1,4 +1,4 @@
-# [ngBoilerplate](http://joshdmiller.github.com/ng-boilerplate) [![Build Status](https://travis-ci.org/joshdmiller/ng-boilerplate.png?branch=master)](https://travis-ci.org/joshdmiller/ng-boilerplate)
+# [ngBoilerplate](http://joshdmiller.github.com/ng-boilerplate)
 
 An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 
@@ -17,7 +17,7 @@ $ bower install
 $ grunt watch
 ```
 
-Finally, open `file:///path/to/ng-boilerplate/build/index.html` in your browser.
+Finally, open `build/index.html` in your browser.
 
 Happy hacking!
 
@@ -73,6 +73,8 @@ At a high level, the structure looks roughly like this:
 
 ```
 ng-boilerplate/
+  |- build/
+  |  |- angular/
   |- grunt-tasks/
   |- karma/
   |- src/
@@ -88,8 +90,6 @@ ng-boilerplate/
   |  |- angular-bootstrap/
   |  |- bootstrap/
   |  |- placeholders/
-  |- .bowerrc
-  |- bower.json
   |- build.config.js
   |- Gruntfile.js
   |- module.prefix
@@ -101,15 +101,17 @@ What follows is a brief description of each entry, but most directories contain
 their own `README.md` file with additional documentation, so browse around to
 learn more.
 
+- `build/` - files needed to make everything happen, but *not* libraries our
+  application uses. [Read more &raquo;](build/README.md)
 - `karma/` - test configuration.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
 - `vendor/` - third-party libraries. [Bower](http://bower.io) will install
   packages here. Anything added to this directory will need to be manually added
-  to `build.config.js` and `karma/karma-unit.js` to be picked up by the build
+  to `Gruntfile.js` and `karma/karma-unit.js` to be picked up by the build
   system.
 - `.bowerrc` - the Bower configuration file. This tells Bower to install
   components into the `vendor/` directory.
-- `bower.json` - this is our project configuration for Bower and it contains the
+- `bower.js` - this is our project configuration for Bower and it contains the
   list of Bower dependencies we need.
 - `build.config.js` - our customizable build settings; see "The Build System"
   below.
@@ -258,8 +260,9 @@ changes:
   `src/less/main.less` file is linted and copied into
   `build/assets/ng-boilerplate.css`.
 * `delta:jssrc` - When any JavaScript file within `src/` that does not end in
-  `.spec.js` changes, all JavaScript sources are linted, all unit tests are run,
-  and the all source files are re-copied to `build/src`.
+  `.spec.js`, `.fixture.js` or `.scenario.js` changes, all JavaScript sources
+  are linted, all unit tests are run, and the all source files are re-copied
+  to `build/src`.
 * `delta:coffeesrc` - When any `*.coffee` file in `src/` that doesn't match
   `*.spec.coffee` changes, the Coffee scripts are compiled independently into
   `build/src` in a structure mirroring where they were in `src/` so it's easy to
@@ -278,6 +281,10 @@ changes:
   are linted and the unit tests are executed.
 * `delta:coffeeunit` - When any `*.spec.coffee` file in `src/` changes, the test
   files are linted, compiled their tests executed.
+* `delta:jsfixture` and `delta:coffeefixture` - When any `*.fixture.*` file in
+  `src/` changes, the files are linted and copied to the build folder.
+* `delta:jsscenario` and `delta:coffeescenario` - When any `*.scenario.*` file in
+  `src/` changes, the files are linted.
 
 As covered in the previous section, `grunt watch` will execute a full build
 up-front and then run any of the aforementioned `delta:*` tasks as needed to
@@ -376,4 +383,3 @@ you're feeling ambitious, you can even submit a pull request - how thoughtful
 of you!
 
 So join the team! We're good people.
-
