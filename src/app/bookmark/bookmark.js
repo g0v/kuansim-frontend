@@ -6,11 +6,13 @@ angular.module('kuansim.bookmark', [
   return {
     getBookmarks: function() {
       return $http.get('/collections/bookmarks/');
-    },
+    }
   };
 })
 
 .controller('BookmarkCtrl', function BookmarkCtrl($scope, Bookmark) {
+
+  $scope.bookmarks = [];
 
   var getAllBookmarks = {
     success: function(data, status) {
@@ -20,7 +22,7 @@ angular.module('kuansim.bookmark', [
       $scope.bookmarks = [];
     }
   };
-  Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
+  // Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
 })
 
 .config(function ($stateProvider) {
