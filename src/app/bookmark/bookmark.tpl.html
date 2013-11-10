@@ -1,0 +1,22 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date Happened</th>
+        <th>Date Resolved</th>
+        <th>Location</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="bookmark in bookmarks">
+        <td>{{bookmark.title}}</td>
+        <td>{{bookmark.date_happened}}</td>
+        <td>{{bookmark.date_resolved}}</td>
+        <td>{{bookmark.location}}</td>
+        <td>{{bookmark.description}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
