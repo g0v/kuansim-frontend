@@ -27,7 +27,7 @@ angular.module('kuansim', [
 
 .run(function ($rootScope, $state, OAuth) {
   $rootScope.state = $state;
-  OAuth.initialize('0S2d7bTw7uolrPTabNAbElFRNwA');
+  OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
 })
 ;
 
