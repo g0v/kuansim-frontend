@@ -6,6 +6,7 @@ angular.module('kuansim', [
   'kuansim.landing',
   'kuansim.about',
   'kuansim.bookmark',
+  'kuansim.issue',
   'ui.router'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
