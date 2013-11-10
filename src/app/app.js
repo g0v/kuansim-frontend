@@ -5,6 +5,7 @@ angular.module('kuansim', [
   'kuansim.user',
   'kuansim.landing',
   'kuansim.about',
+  'kuansim.bookmark',
   'ui.router'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -15,16 +16,8 @@ angular.module('kuansim', [
     .state('index', {
       url: '/',
       title: 'Kuansim',
-      views: {
-        'navigation': {
-          templateUrl: 'nav/nav.tpl.html',
-          controller: 'NavCtrl'
-        },
-        'landing': {
-          templateUrl: 'landing/landing.tpl.html',
-          controller: 'LandingCtrl'
-        }
-      }
+      templateUrl: 'landing/landing.tpl.html',
+      controller: 'LandingCtrl'
     })
     ;
 })
