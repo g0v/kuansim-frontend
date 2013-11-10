@@ -3,17 +3,24 @@
     Bookmark <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
+    <li><a href="#" ng-click="state.transitionTo('bookmark')">List</a></li>
     <li><a href="#">Create</a></li>
     <li><a href="#">Delete</a></li>
   </ul>
 </div>
 <div class="btn-group login">
   <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-    Login <span class="caret"></span>
+    <span ng-show="currentUser().loggedIn()">{{currentUser().name()}}</span>
+    <span ng-show="!currentUser().loggedIn()">Login</span>
+    <span class="caret"></span>
   </button>
   <ul class="dropdown-menu pull-right" role="menu">
-    <li><a href="users/auth/google_oauth2">Sign in with Google</a></li>
-    <li><a href="users/auth/facebook">Sign in with Facebook</a></li>
-    <li><a href="#" ng-click="testOAuth()">Test</a></li>
+    <span ng-show="currentUser().loggedIn()">
+      <li><a href="#" ng-click="userLogout()">Logout</a></li>
+    </span>
+    <span ng-show="!currentUser().loggedIn()">
+      <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
+      <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
+    </span>
   </ul>
 </div>

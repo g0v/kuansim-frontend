@@ -1,7 +1,35 @@
 angular.module('kuansim.user', [
 ])
+
 .factory('User', function () {
-  return {};
+  var loggedIn = false;
+  var email = "";
+  var name = "";
+
+  var logIn = function(aemail, aname) {
+    loggedIn = true;
+    email = aemail;
+    name = aname;
+  };
+
+  var logInState = function() {
+    return loggedIn;
+  };
+
+  var getName = function() {
+    return name;
+  };
+
+  var getEmail = function() {
+    return email;
+  };
+
+  return {
+    email: getEmail,
+    name: getName,
+    loggedIn: logInState,
+    logIn: logIn
+  };
 })
 .factory('OAuth', function () {
   (function() {
@@ -652,7 +680,5 @@ angular.module('kuansim.user', [
 })
 
 .controller('UserCtrl', function UserCtrl($scope) {
-})
-
-;
+});
 

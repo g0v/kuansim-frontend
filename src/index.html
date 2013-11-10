@@ -8,6 +8,7 @@
 
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+    <link rel="stylesheet" href="assets/css/social-buttons/zocial.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/oauth.js"></script>
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
@@ -17,15 +18,42 @@
     <div id="nav">
       <div id="banner">
         <i class="glyphicon glyphicon-heart"></i>
-        Kuansim
+        <a href="" ng-click="state.transitionTo('index')">
+          Kuansim
+        </a>
       </div>
-      <div id="menu">
-        <div ui-view="navigation"></div>
+      <div id="menu" ng-controller="NavCtrl">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+            Bookmark <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" ng-click="state.transitionTo('bookmark')">List</a></li>
+            <li><a href="#">Create</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </div>
+        <div class="btn-group login">
+          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+            <span ng-show="currentUser().loggedIn()">{{currentUser().name()}}</span>
+            <span ng-show="!currentUser().loggedIn()">Login</span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <span ng-show="currentUser().loggedIn()">
+              <li><a href="#" ng-click="userLogout()">Logout</a></li>
+            </span>
+            <span ng-show="!currentUser().loggedIn()">
+              <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
+              <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
+            </span>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="wrapper">
       <div class="container">
-        <div ui-view="landing"></div>
+        <div ui-view></div>
       </div>
     </div>
   </body>

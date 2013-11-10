@@ -1,4 +1,5 @@
 angular.module('kuansim.bookmark', [
+  'ui.router'
 ])
 
 .factory('Bookmark', function($http) {
@@ -20,7 +21,17 @@ angular.module('kuansim.bookmark', [
     }
   };
   Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
+})
 
+.config(function ($stateProvider) {
+  $stateProvider
+    .state('bookmark', {
+      url: '/bookmark',
+      title: 'Bookmarks',
+      templateUrl: 'bookmark/bookmark.tpl.html',
+      controller: 'BookmarkCtrl'
+    })
+    ;
 })
 
 ;
