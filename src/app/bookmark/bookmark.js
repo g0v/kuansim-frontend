@@ -170,7 +170,4 @@ angular.module('kuansim.bookmark', [
       controller: 'BookmarkCreateCtrl'
     })
     ;
-})
-
-;
-
+});

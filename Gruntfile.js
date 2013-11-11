@@ -302,7 +302,9 @@ module.exports = function ( grunt ) {
     jshint: {
       src: [
         '<%= app_files.js %>',
-        '!src/app/user/user.js'
+        '!src/app/user/user.js',
+        '!src/app/issue/issue.js',
+        '!src/app/issue/timeline.min.js'
       ],
       test: [
         '<%= app_files.jsunit %>'
