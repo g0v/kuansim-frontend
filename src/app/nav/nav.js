@@ -24,9 +24,7 @@ var navModule = angular.module('kuansim.nav', [
 
   };
 
-  $scope.currentUser = function() {
-    return User;
-  };
+  $scope.currentUser = User;
 
   $scope.userLogout = function() {
     $http.post('/users/sign_out', {email: User.email()}).
