@@ -1,7 +1,7 @@
 describe('bookmark module', function() {
   beforeEach(module('kuansim.bookmark'));
-
-  describe('BookmarkCtrl', function () {
+  // prefixing `it` or `describe` with an `x` will make that test pending
+  xdescribe('BookmarkCtrl', function () {
 
     var scope, ctrl, httpBackend;
 

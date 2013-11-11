@@ -1,7 +1,7 @@
 <div style="margin-top: 10px">
   <div ng-show="hasAlert" class="alert" ng-class="{'alert-success': alertSuccess, 'alert-danger': !alertSuccess}">{{alertMessage}}</div>
 
-  <form role="form">
+  <form role="form" class="bookmark-form">
     <div class="form-group">
       <label for="bmTitle">Title</label>
       <input ng-model="bmTitle" type="text" class="form-control" id="bmTitle" placeholder="Enter a title">

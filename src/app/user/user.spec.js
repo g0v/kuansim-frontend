@@ -1,7 +1,7 @@
 describe('user module', function() {
   beforeEach(module('kuansim.user'));
 
-  describe('User service', function () {
+  xdescribe('User service', function () {
     it('deals with user login intermediate steps', inject(function (User) {
       var user = {
         name: 'Spooky Monkey',

@@ -1,41 +1,74 @@
 describe('issue module', function() {
   beforeEach(module('kuansim.issue'));
 
+
+  describe('timeline directive', function () {
+    var compile, scope, httpBackend, res;
+
+    beforeEach(inject(function ($compile, $rootScope, $httpBackend) {
+      compile = $compile;
+      scope = $rootScope.$new();
+      httpBackend = $httpBackend;
+      res = {success: true};
+      httpBackend.when('GET', '/collections/issues/2').respond(res);
+      httpBackend.when('GET', '/collections/issues/3').respond(res);
+    }));
+
+    it('pulls new issue data if dropdown menu changed', function () {
+      // httpBackend.flush();
+      scope.dummy = '1';
+      var elm = compile('<div timeline timeline-issue="dummy"></div>')(scope);
+      scope.$apply(function () {
+        scope.dummy = '2';
+      });
+      httpBackend.expectGET('/collections/issues/2');
+      scope.$apply(function () {
+        scope.dummy = '3';
+      });
+      httpBackend.expectGET('/collections/issues/3');
+    });
+
+  });
+
   describe('IssueCtrl', function () {
 
-    var scope, ctrl, httpBackend;
+    var scope, ctrl, httpBackend, ctrlService, issuesList;
 
     beforeEach(function () {
       inject(function ($rootScope, $controller, $httpBackend) {
         scope = $rootScope.$new();
-        ctrl = $controller('IssueCtrl', {$scope: scope});
+        ctrlService = $controller;
         httpBackend = $httpBackend;
-
-        var issuesList = [
-
+        issuesList = [
+          {
+            id: '1',
+            title: 'one fake issue',
+            description: 'a very fake issue'
+          },
+          {
+            id: '2',
+            title: '2nd fake issue',
+            description: 'a very fake issue'
+          },
+          {
+            id: '3',
+            title: '3rd fake issue',
+            description: 'a very fake issue'
+          }
         ];
-
-        httpBackend.when('POST', '/collections/bookmarks').respond(respondObj);
+        httpBackend.when('GET', '/collections/issues').respond(issuesList);
       });
     });
 
-
-    it('creates a new bookmark', function () {
-      // fill in the fake data in js object
-      var newBookmark = {
-        url: 'http://online.wsj.com/news/articles/SB10001424052702304527504579174283262127454',
-        type: 'news',
-        date: Date.now(),
-        tags: ['LAX', 'shooting', 'murder'],
-        msg: "Federal officials charged the 23-year-old suspect in Friday's shooting rampage at Los Angeles International Airport"
-      };
-
-      scope.createBookmark();
-
-      httpBackend.expectPOST('/collections/bookmarks', newBookmark)
-                 .respond(200, '[{status:"success", data:null, msg:"a bookmark is successfully created"}]');
-
+    it('gets list of all the issues', function () {
+      httpBackend.expectGET('/collections/issues');
+      ctrl = ctrlService('IssueCtrl', {$scope: scope});
       httpBackend.flush();
+
+      expect(scope.issues).toEqual(issuesList);
+      expect(scope.selectedIssue).toEqual(issuesList[0]);
+      expect(scope.selectedIssueId).toEqual(issuesList[0].id);
+
     });
 
   });

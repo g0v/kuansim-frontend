@@ -1,5 +1,5 @@
 angular.module('kuansim.issue', [
-
+  'ui.router'
 ])
 
 .directive('timeline', function ($timeout, $http) {
