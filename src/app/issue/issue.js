@@ -8,22 +8,22 @@ angular.module('kuansim.issue', [
     scope: {},
     link: function (scope, element, attrs) {
 
-      scope.sampleJson = $http.get('assets/json/timeline_sample.json').success(function (response) {
+      $http.get('assets/json/timeline_sample.json').success(function (response) {
         console.log('fetching sample timeline data GOOD!', response);
-        return response;
+        scope.sampleJson = response;
+        $timeout(function() {
+          createStoryJS({
+              type:       'timeline',
+              width:      '100%',
+              height:     '700',
+              source:     scope.sampleJson,
+              embed_id:   'issue',
+              debug:      true
+          });
+        }, 0);
+        console.log("Running timelineJS");
       });
 
-      var postpone = $timeout(function() {
-        createStoryJS({
-            type:       'timeline',
-            width:      '800',
-            height:     '600',
-            source:     scope.sampleJson,
-            embed_id:   'issue',
-            debug:      true
-        });
-      }, 0);
-      console.log("Running timelineJS");
 
     }
   };
