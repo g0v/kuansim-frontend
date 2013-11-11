@@ -10,7 +10,7 @@ describe('index landing page', function() {
   describe('LandingCtrl', function () {
     it('has a scope variable `test`', inject(function ($controller) {
       var scope = {},
-          ctrl = $controller('LandingCtrl', {$scope: scope});
+      ctrl = $controller('LandingCtrl', {$scope: scope});
       expect(scope.test.length).toBe(3);
     }));
   });

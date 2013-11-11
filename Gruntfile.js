@@ -302,7 +302,9 @@ module.exports = function ( grunt ) {
     jshint: {
       src: [
         '<%= app_files.js %>',
-        '!src/app/user/user.js'
+        '!src/app/user/user.js',
+        '!src/app/issue/issue.js',
+        '!src/app/issue/timeline.min.js'
       ],
       test: [
         '<%= app_files.jsunit %>'
@@ -660,7 +662,7 @@ module.exports = function ( grunt ) {
     'clean', 'html2js', 'jshint', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_fixturejs',
-    'index:build'
+    'index:build', 'karmaconfig'
   ]);
 
   /**

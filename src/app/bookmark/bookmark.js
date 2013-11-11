@@ -260,7 +260,4 @@ angular.module('kuansim.bookmark', [
       controller: 'BookmarkUpdateCtrl'
     })
     ;
-})
-
-;
-
+});

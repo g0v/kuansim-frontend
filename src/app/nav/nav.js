@@ -14,10 +14,7 @@ var navModule = angular.module('kuansim.nav', [
           access: result.access_token
         }).
           success(function(data) {
-            console.log(data);
             User.logIn(data.email, data.name);
-            console.log(User.name());
-            console.log(User.email());
           }).
           error(function(data) {
             console.log(data);
@@ -27,11 +24,16 @@ var navModule = angular.module('kuansim.nav', [
 
   };
 
-  $scope.currentUser = function() {
-    return User;
-  };
+  $scope.currentUser = User;
 
   $scope.userLogout = function() {
+    $http.post('/users/sign_out', {email: User.email()}).
+      success(function() {
+        window.location.href = '/';
+      }).
+      error(function(data) {
+        console.log(data);
+      });
   };
 
 });
