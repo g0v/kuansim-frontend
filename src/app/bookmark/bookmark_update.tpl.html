@@ -4,17 +4,17 @@
   <form role="form">
     <div class="form-group">
       <label for="bmTitle">Title</label>
-      <input ng-model="bmTitle" type="text" class="form-control" id="bmTitle" placeholder="Enter a title">
+      <input ng-model="bmTitle" type="text" class="form-control" id="bmTitle">
     </div>
 
     <div class="form-group">
       <label for="bmDateStr">Date</label>
-      <input ng-model="bmDateStr" type="date" class="form-control" id="bmDateStr" placeholder="Enter a date">
+      <input ng-model="bmDateStr" type="date" class="form-control" id="bmDateStr">
     </div>
 
     <div class="form-group">
       <label for="bmLocation">Location</label>
-      <input ng-model="bmLocation" type="text" class="form-control" id="bmLocation" placeholder="Enter a location">
+      <input ng-model="bmLocation" type="text" class="form-control" id="bmLocation">
     </div>
 
     <div class="form-group">
@@ -22,6 +22,6 @@
       <textarea ng-model="bmDescription" class="form-control" id="bmDescription" rows="3"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-default" ng-click="createBookmark()">Create Bookmark</button>
+    <button type="submit" class="btn btn-default" ng-click="updateBookmark()">Update</button>
   </form>
 </div>
