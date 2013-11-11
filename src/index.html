@@ -35,15 +35,15 @@
         </div>
         <div class="btn-group login">
           <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-            <span ng-show="currentUser().loggedIn()">{{currentUser().name()}}</span>
-            <span ng-show="!currentUser().loggedIn()">Login</span>
+            <span ng-show="currentUser.loggedIn()">{{currentUser.name()}}</span>
+            <span ng-show="!currentUser.loggedIn()">Login</span>
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu pull-right" role="menu">
-            <span ng-show="currentUser().loggedIn()">
+            <span ng-show="currentUser.loggedIn()">
               <li><a href="#" ng-click="userLogout()">Logout</a></li>
             </span>
-            <span ng-show="!currentUser().loggedIn()">
+            <span ng-show="!currentUser.loggedIn()">
               <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
               <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
             </span>
