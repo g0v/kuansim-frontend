@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="kuansim" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="state.current.title"></title>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/kuansim-frontend-0.0.1.css" />
+    <link rel="stylesheet" href="assets/css/social-buttons/zocial.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/oauth.js"></script>
+    <script type="text/javascript" src="assets/timeline/js/storyjs-embed.js"></script>
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="assets/kuansim-frontend-0.0.1.js"></script>
+  </head>
+  <body>
+    <div id="nav">
+      <div id="banner">
+        <i class="glyphicon glyphicon-heart"></i>
+        <a href="" ui-sref="index">
+          Kuansim
+        </a>
+      </div>
+      <div id="menu" ng-controller="NavCtrl">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+            Bookmark <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/bookmarks">List</a></li>
+            <li><a href="#/bookmarks/create">Create</a></li>
+          </ul>
+        </div>
+        <div class="btn-group login">
+          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+            <span ng-show="currentUser.loggedIn()">{{currentUser.name()}}</span>
+            <span ng-show="!currentUser.loggedIn()">Login</span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <span ng-show="currentUser.loggedIn()">
+              <li><a href="#" ng-click="userLogout()">Logout</a></li>
+            </span>
+            <span ng-show="!currentUser.loggedIn()">
+              <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
+              <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
+            </span>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container">
+        <div ui-view></div>
+      </div>
+    </div>
+  </body>
+</html>
