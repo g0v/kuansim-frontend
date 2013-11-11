@@ -1,3 +1,8 @@
-<div timeline>
+<select class="form-control"
+        ng-model="selectedIssue"
+        name="issueSelect"
+        ng-options="issue.title for issue in issues"></select>
+
+<div timeline timeline-issue="selectedIssue.id">
   <div id="issue"></div>
 </div>
