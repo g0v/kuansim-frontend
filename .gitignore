@@ -1,6 +1,5 @@
 *.sw*
 *~
-bin/
 node_modules/
 build/
 vendor/

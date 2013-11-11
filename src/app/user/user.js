@@ -5,6 +5,7 @@ angular.module('kuansim.user', [
   var loggedIn = false;
   var email = "";
   var name = "";
+  var currentUser = null;
 
   var logIn = function(aemail, aname) {
     loggedIn = true;
