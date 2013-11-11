@@ -6,21 +6,53 @@ angular.module('kuansim.bookmark', [
 .factory('Bookmark', function($http) {
   return {
     getBookmarks: function() {
-      return $http.get('/collections/bookmarks/');
+      return $http.get('/collections/bookmarks');
     },
     createBookmark: function(bookmark) {
-      return $http.post('/collections/bookmarks/', bookmark);
+      return $http.post('/collections/bookmarks', bookmark);
+    },
+    deleteBookmark: function(bookmark) {
+      return $http.post('/collections/bookmarks/' + bookmark.id);
     }
   };
 })
 
-.controller('BookmarkCtrl', function BookmarkCtrl($scope, Bookmark) {
+.factory('BookmarkAlerts', function($rootScope) {
+  var alert = {
+    message: "",
+    success: true
+  };
+  var alertExists = function() {
+    return alert.message !== "";
+  };
+  var setAlert = function(message, success) {
+    alert.message = message;
+    alert.success = success;
+  };
+  var getAlert = function() {
+    return alert;
+  };
+  var clearAlert = function() {
+    alert.message = "";
+  };
+
+  return {
+    alert: alert,
+    alertExists: alertExists,
+    setAlert: setAlert,
+    getAlert: getAlert,
+    clearAlert: clearAlert
+  };
+})
+
+.controller('BookmarkCtrl', function BookmarkCtrl($scope, $rootScope, Bookmark, BookmarkAlerts) {
 
   $scope.bookmarks = [];
-
-  $rootScope.$watch('notification', function() {
-    $scope.notification = $rootScope.notification;
-  });
+  console.log(BookmarkAlerts.getAlert());
+  $scope.hasAlert = BookmarkAlerts.alertExists();
+  $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+  $scope.alertMessage = BookmarkAlerts.getAlert().message;
+  BookmarkAlerts.clearAlert();
 
   var getAllBookmarks = {
     success: function(data, status) {
@@ -28,62 +60,97 @@ angular.module('kuansim.bookmark', [
     },
     error: function(data, status) {
       $scope.bookmarks = [];
+      BookmarkAlerts.setAlert("Sorry, there was a problem retreiving bookmarks.", false);
+      $scope.hasAlert = BookmarkAlerts.alertExists();
+      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+      $scope.alertMessage = BookmarkAlerts.getAlert().message;
+      BookmarkAlerts.clearAlert();
     }
   };
-  // Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
+
+  $scope.getAllBookmarks = function() {
+    Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
+  };
+
+  $scope.getAllBookmarks();
+
+  var deleteBookmarkCallbacks = {
+    success: function(data, status) {
+      if (data.success) {
+        BookmarkAlerts.setAlert("Successfully deleted bookmark.", true);
+      } else {
+        BookmarkAlerts.setAlert(data.error, false);
+      }
+      $scope.hasAlert = BookmarkAlerts.alertExists();
+      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+      $scope.alertMessage = BookmarkAlerts.getAlert().message;
+      BookmarkAlerts.clearAlert();
+      $scope.getAllBookmarks();
+    },
+    error: function(data, status) {
+      BookmarkAlerts.setAlert("Sorry, there was a problem deleting the bookmark.", false);
+      $scope.hasAlert = BookmarkAlerts.alertExists();
+      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+      $scope.alertMessage = BookmarkAlerts.getAlert().message;
+      BookmarkAlerts.clearAlert();
+    }
+  };
+
+  $scope.deleteBookmark = function(bookmark) {
+    Bookmark.deleteBookmark(bookmark).success(deleteBookmarkCallbacks.success).error(deleteBookmarkCallbacks.error);
+  };
 
 })
 
-.controller('BookmarkCreateCtrl', function BookmarkCreateCtrl($scope, $timeout, $rootScope, Bookmark) {
+.controller('BookmarkCreateCtrl', function BookmarkCreateCtrl($scope, $timeout, $rootScope, $location, Bookmark, BookmarkAlerts) {
 
-  $scope.dateOptions = {
-    'year-format': "'yy'",
-    'starting-day': 1
-  };
-
-  $scope.open = function() {
-    $timeout(function() {
-      $scope.opened = true;
-    });
-  };
-
-  $scope.today = function() {
-    $scope.dateToday = new Date();
-  };
-
-  $scope.disabled = function(date, mode) {
-    return (mode === 'day' && (date > $scope.dateToday));
-  };
+  $scope.hasAlert = BookmarkAlerts.alertExists();
+  $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+  $scope.alertMessage = BookmarkAlerts.getAlert().message;
+  BookmarkAlerts.clearAlert();
 
   var callbacks = {
     success: function(data, status) {
-      $rootScope.notification = {
-        status: "success",
-        message: "Successfully created bookmark."
-      };
-      $rootScope.$apply();
+      if (data.success) {
+        BookmarkAlerts.setAlert("Successfully created bookmark!", true);
+        $location.path("bookmarks");
+      } else {
+        BookmarkAlerts.setAlert("Failed to create bookmark. " + data.error, false);
+        $scope.hasAlert = BookmarkAlerts.alertExists();
+        $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+        $scope.alertMessage = BookmarkAlerts.getAlert().message;
+        BookmarkAlerts.clearAlert();
+      }
     },
     error: function(data, status) {
-      $rootScope.notification = {
-        status: "error",
-        message: "Failed to create bookmark."
-      };
-      $rootScope.$apply();
+      BookmarkAlerts.setAlert("Failed to create bookmark.", false);
+      $scope.hasAlert = BookmarkAlerts.alertExists();
+      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+      $scope.alertMessage = BookmarkAlerts.getAlert().message;
+      BookmarkAlerts.clearAlert();
     }
   };
 
-  $rootScope.$watch('notification', function() {
-    $scope.notification = $rootScope.notification;
-  });
-
   $scope.createEvent = function() {
-    var bookmark = {
-      title: $scope.bookmarkTitle,
-      dateHappened: $scope.bookmarkDate.UTCgetMilliseconds,
-      location: $scope.bookmarkLocation,
-      description: $scope.bookmarkDescription
-    };
-    Bookmark.createBookmark(bookmark).success(callbacks.success).error(callbacks.error);
+    if ($scope.bmTitle && $scope.bmDateStr && $scope.bmLocation) {
+      var dateList = $scope.bmDateStr.split("-");
+      $scope.bmDate = new Date(dateList[0], dateList[1], dateList[2]);
+
+      var bookmark = {
+        title: $scope.bmTitle,
+        date_happened: $scope.bmDate.getTime(),
+        location: $scope.bmLocation,
+        description: $scope.bmDescription
+      };
+      Bookmark.createBookmark(bookmark).success(callbacks.success).error(callbacks.error);
+
+    } else {
+      BookmarkAlerts.setAlert("Failed to create bookmark. Cannot have empty fields.", false);
+      $scope.hasAlert = BookmarkAlerts.alertExists();
+      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
+      $scope.alertMessage = BookmarkAlerts.getAlert().message;
+      BookmarkAlerts.clearAlert();
+    }
   };
 
 })
@@ -91,13 +158,13 @@ angular.module('kuansim.bookmark', [
 .config(function ($stateProvider) {
   $stateProvider
     .state('bookmark', {
-      url: '/bookmark',
+      url: '/bookmarks',
       title: 'Bookmarks',
       templateUrl: 'bookmark/bookmark.tpl.html',
       controller: 'BookmarkCtrl'
     })
     .state('bookmarkCreate', {
-      url: '/bookmark/create',
+      url: '/bookmarks/create',
       title: 'Bookmarks',
       templateUrl: 'bookmark/bookmark_create.tpl.html',
       controller: 'BookmarkCreateCtrl'
