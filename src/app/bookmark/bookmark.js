@@ -9,12 +9,9 @@ angular.module('kuansim.bookmark', [
       title: 'Bookmarks',
       templateUrl: 'bookmark/bookmark.tpl.html',
       controller: 'BookmarkCtrl'
-    })
-    ;
+    });
 })
 
 .controller('BookmarkCtrl', function BookmarkCtrl($scope) {
-})
-
-;
+});
 

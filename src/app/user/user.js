@@ -6,10 +6,10 @@ angular.module('kuansim.user', [
   var email = "";
   var name = "";
 
-  var logIn = function(aemail, aname) {
+  var logIn = function(email, name) {
     loggedIn = true;
-    email = aemail;
-    name = aname;
+    email = email;
+    name = name;
   };
 
   var logInState = function() {

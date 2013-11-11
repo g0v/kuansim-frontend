@@ -10,16 +10,14 @@ angular.module('kuansim', [
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
-    .when('', '/')  // This is a AngularUI router ambiguity, needs to be resolved
-    ;
+    .when('', '/');  // This is a AngularUI router ambiguity, needs to be resolved
   $stateProvider
     .state('index', {
       url: '/',
       title: 'Kuansim',
       templateUrl: 'landing/landing.tpl.html',
       controller: 'LandingCtrl'
-    })
-    ;
+    });
 })
 .controller('AppCtrl', function AppCtrl($scope, $location) {
 
@@ -28,6 +26,5 @@ angular.module('kuansim', [
 .run(function ($rootScope, $state, OAuth) {
   $rootScope.state = $state;
   OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
-})
-;
+});
 
