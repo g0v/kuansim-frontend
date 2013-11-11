@@ -10,10 +10,12 @@ describe('bookmark scenarios', function () {
     expect(bookmarkBtn.text()).toContain('Bookmark');
     bookmarkBtn.click();
     expect(element('#menu .btn-group:first .dropdown-menu:visible', 'bookmark dropdown menu').count()).toBe(1);
-    element('#menu .btn-group:first .dropdown-menu:visible li:first', 'create bookmark link').click();
+    var createBookmarkBtn = element('#menu .btn-group:first .dropdown-menu:visible a:last', 'create bookmark link');
+    expect(createBookmarkBtn.text()).toContain('Create');
+    createBookmarkBtn.click();
 
     // Then I should be on the new bookmark page
-    expect(browser().location().path()).toBe('/bookmark/create');
+    expect(browser().location().path()).toBe('/bookmarks/create');
 
     // When I fill in the bookmark info in the form
     input('url').enter('http://online.wsj.com/news/articles/SB10001424052702304527504579174283262127454');
@@ -26,7 +28,7 @@ describe('bookmark scenarios', function () {
     element('button.createBookmarkBtn', 'bookmark submit btn').click();
 
     // Then I should be on the bookmark list page
-    expect(browser().location().path()).toBe('/bookmark');
+    expect(browser().location().path()).toBe('/bookmarks');
 
   });
 });

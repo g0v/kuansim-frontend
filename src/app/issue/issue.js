@@ -27,11 +27,7 @@ angular.module('kuansim.issue', [
             console.log("Running timelineJS");
           });
         }
-
       });
-      // $http.get('assets/json/timeline_sample.json').success(function (response) {
-
-
     }
   };
 })
