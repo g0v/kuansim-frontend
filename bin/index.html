@@ -24,8 +24,8 @@
         </a>
       </div>
       <div id="menu" ng-controller="NavCtrl">
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+        <div class="btn-group navigation">
+          <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
             Bookmark <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
@@ -33,20 +33,36 @@
             <li><a href="#/bookmarks/create">Create</a></li>
           </ul>
         </div>
+
+        <div class="btn-group navigation">
+          <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
+            Issues <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/issue">Timeline</a></li>
+          </ul>
+        </div>
+
         <div class="btn-group login">
-          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+          <button type="button"
+                  ng-class="{'btn-success': !currentUser.loggedIn(),
+                             'disabled': isLoggingIn,
+                             'btn-primary': currentUser.loggedIn()}"
+                  class="btn btn-sm dropdown-toggle"
+                  data-toggle="dropdown">
             <span ng-show="currentUser.loggedIn()">{{currentUser.name()}}</span>
-            <span ng-show="!currentUser.loggedIn()">Login</span>
+            <span ng-show="!currentUser.loggedIn()">
+              <span ng-show="isLoggingIn">Logging in...</span>
+              <span ng-hide="isLoggingIn">Login</span>
+            </span>
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu pull-right" role="menu">
-            <span ng-show="currentUser.loggedIn()">
-              <li><a href="#" ng-click="userLogout()">Logout</a></li>
-            </span>
-            <span ng-show="!currentUser.loggedIn()">
-              <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
-              <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
-            </span>
+          <ul class="dropdown-menu pull-right" role="menu" ng-show="currentUser.loggedIn()">
+            <li><a href="#" ng-click="userLogout()">Logout</a></li>
+          </ul>
+          <ul class="dropdown-menu pull-right" role="menu" ng-hide="currentUser.loggedIn()">
+            <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
+            <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
           </ul>
         </div>
       </div>

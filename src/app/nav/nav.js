@@ -4,7 +4,10 @@ var navModule = angular.module('kuansim.nav', [
 
 .controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User) {
 
+  $scope.isLoggingIn = false;
+
   $scope.thirdPartySignIn = function(provider) {
+    $scope.isLoggingIn = true;
     OAuth.popup(provider, function(error, result) {
       if (error) {
         console.log(error);
@@ -13,12 +16,14 @@ var navModule = angular.module('kuansim.nav', [
           provider: provider,
           access: result.access_token
         }).
-          success(function(data) {
-            User.logIn(data.email, data.name);
-          }).
-          error(function(data) {
-            console.log(data);
-          });
+        success(function(data) {
+          $scope.isLoggingIn = false;
+          User.logIn(data.email, data.name);
+        }).
+        error(function(data) {
+          $scope.isLoggingIn = false;
+          console.log(data);
+        });
       }
     });
 

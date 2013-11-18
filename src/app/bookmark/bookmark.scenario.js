@@ -18,17 +18,16 @@ describe('bookmark scenarios', function () {
     expect(browser().location().path()).toBe('/bookmarks/create');
 
     // When I fill in the bookmark info in the form
-    input('url').enter('http://online.wsj.com/news/articles/SB10001424052702304527504579174283262127454');
-    input('type').enter('news');
-    input('date').enter(Date.now());
-    input('tags').enter('LAX, shooting, murder');
-    input('msg').enter("Federal officials charged the 23-year-old suspect in Friday's shooting rampage at Los Angeles International Airport");
+    input('bmTitle').enter('news');
+    input('bmDateStr').enter(Date.now());
+    input('bmLocation').enter('LAX, shooting, murder');
+    input('bmDescription').enter("Federal officials charged the 23-year-old suspect in Friday's shooting rampage at Los Angeles International Airport");
 
     // And I press create bookmark
-    element('button.createBookmarkBtn', 'bookmark submit btn').click();
+    element('form.bookmark-form button', 'bookmark submit btn').click();
 
     // Then I should be on the bookmark list page
-    expect(browser().location().path()).toBe('/bookmarks');
+    expect(browser().location().path()).toBe('/bookmarks/create');
 
   });
 });

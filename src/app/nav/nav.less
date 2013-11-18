@@ -1,0 +1,29 @@
+.login {
+  .zocial {
+    min-width: 250px;
+    margin: 0 5px;
+    color: #fff !important;
+  }
+}
+
+@navigationBtnBg: #881603;
+@navigationColor: #D8D8D8;
+
+.btn-group.navigation {
+  & > button {
+    background-color: @navigationBtnBg;
+    color: @navigationColor;
+    & > .caret {
+      border-top-color: @navigationColor;
+    }
+  }
+  & > .dropdown-menu {
+    & > li > a {
+      &:hover {
+        color: @navigationColor !important;
+        background-color: @navigationBtnBg !important;
+      }
+    }
+  }
+
+}
