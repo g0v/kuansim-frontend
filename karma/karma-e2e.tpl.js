@@ -22,7 +22,7 @@ module.exports = function ( karma ) {
       {pattern: '<%= grunt.config( "build_dir" ) %>/**/*', watched: false, included: false, served: true}
     ],
 
-    //frameworks: [ 'ng-scenario' ],
+    // frameworks: [ 'ng-scenario' ],
     plugins: [ 'karma-firefox-launcher', 'karma-chrome-launcher', 'karma-coffee-preprocessor' ],
     preprocessors: {
       '**/*.coffee': 'coffee'
