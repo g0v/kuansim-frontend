@@ -34,6 +34,7 @@ var navModule = angular.module('kuansim.nav', [
   $scope.userLogout = function() {
     $http.post('/users/sign_out', {email: User.email()}).
       success(function() {
+        User.logOut();
         window.location.href = '/';
       }).
       error(function(data) {

@@ -7,7 +7,8 @@ angular.module('kuansim', [
   'kuansim.about',
   'kuansim.bookmark',
   'kuansim.issue',
-  'ui.router'
+  'ui.router',
+  'ngCookies'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
@@ -24,8 +25,29 @@ angular.module('kuansim', [
 
 })
 
-.run(function ($rootScope, $state, OAuth) {
+.run(function ($rootScope, $state, OAuth, $cookies, User, $http) {
   $rootScope.state = $state;
   OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
+
+  var verifyLogin = function(email, name) {
+    $http.post('/users/verify', {
+      email: email
+    }).
+    success(function(data) {
+      if (!data.success) {
+        console.log(data.message);
+      } else {
+        User.logIn(email, name);
+      }
+    });
+  };
+
+  if ($cookies.kuansimLogIn) {
+    var logInCookie = JSON.parse($cookies.kuansimLogIn);
+    var email = logInCookie.email;
+    var name = logInCookie.name;
+    verifyLogin(email, name);
+  }
+
 });
 

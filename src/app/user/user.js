@@ -1,16 +1,25 @@
 angular.module('kuansim.user', [
+  'ngCookies'
 ])
 
-.factory('User', function () {
+.factory('User', function ($cookies) {
   var loggedIn = false;
   var email = "";
   var name = "";
-  var currentUser = null;
 
-  var logIn = function(aemail, aname) {
+  var logIn = function(_email, _name) {
     loggedIn = true;
-    email = aemail;
-    name = aname;
+    email = _email;
+    name = _name;
+    $cookies.kuansimLogIn = JSON.stringify({email: email, name: name});
+    console.log($cookies.kuansimLogIn);
+  };
+
+  var logOut = function() {
+    loggedIn = false;
+    email = "";
+    name = "";
+    $cookies.kuansimLogIn = "";
   };
 
   var logInState = function() {
@@ -29,7 +38,8 @@ angular.module('kuansim.user', [
     email: getEmail,
     name: getName,
     loggedIn: logInState,
-    logIn: logIn
+    logIn: logIn,
+    logOut: logOut
   };
 })
 .factory('OAuth', function () {
