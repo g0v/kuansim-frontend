@@ -1,7 +1,7 @@
 angular.module('kuansim.user', [
 ])
 
-.service('User', function ($cookies) {
+.service('User', function () {
   this.loggedIn = false;
   this.email = "";
   this.name = "";
