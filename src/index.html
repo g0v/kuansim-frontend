@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
     <link rel="stylesheet" href="assets/css/social-buttons/zocial.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/oauth.js"></script>
     <script type="text/javascript" src="assets/timeline/js/storyjs-embed.js"></script>
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <script type="text/javascript" src="assets/js/oauth.js"></script>
   </head>
   <body>
     <div id="nav">
@@ -45,24 +45,24 @@
 
         <div class="btn-group login">
           <button type="button"
-                  ng-class="{'btn-success': !currentUser.loggedIn(),
+                  ng-class="{'btn-success': !currentUser.loggedIn,
                              'disabled': isLoggingIn,
-                             'btn-primary': currentUser.loggedIn()}"
+                             'btn-primary': currentUser.loggedIn}"
                   class="btn btn-sm dropdown-toggle"
                   data-toggle="dropdown">
-            <span ng-show="currentUser.loggedIn()">{{currentUser.name()}}</span>
-            <span ng-show="!currentUser.loggedIn()">
+            <span ng-show="currentUser.loggedIn">{{currentUser.name}}</span>
+            <span ng-show="!currentUser.loggedIn">
               <span ng-show="isLoggingIn">Logging in...</span>
               <span ng-hide="isLoggingIn">Login</span>
             </span>
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu pull-right" role="menu" ng-show="currentUser.loggedIn()">
-            <li><a href="#" ng-click="userLogout()">Logout</a></li>
+          <ul class="dropdown-menu pull-right" role="menu" ng-show="currentUser.loggedIn">
+            <li><a href="#" ng-click="logOut()">Logout</a></li>
           </ul>
-          <ul class="dropdown-menu pull-right" role="menu" ng-hide="currentUser.loggedIn()">
-            <li><a href="" class="zocial google" ng-click="thirdPartySignIn('google')">Sign in with Google</a></li>
-            <li><a href="" class="zocial facebook" ng-click="thirdPartySignIn('facebook')">Sign in with Facebook</a></li>
+          <ul class="dropdown-menu pull-right" role="menu" ng-hide="currentUser.loggedIn">
+            <li><a href="" class="zocial google" ng-click="logIn('google')">Sign in with Google</a></li>
+            <li><a href="" class="zocial facebook" ng-click="logIn('facebook')">Sign in with Facebook</a></li>
           </ul>
         </div>
       </div>

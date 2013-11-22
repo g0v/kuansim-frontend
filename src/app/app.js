@@ -8,7 +8,8 @@ angular.module('kuansim', [
   'kuansim.bookmark',
   'kuansim.issue',
   'ui.router',
-  'ngCookies'
+  'ngCookies',
+  'oauth'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
@@ -42,8 +43,8 @@ angular.module('kuansim', [
     });
   };
 
-  if ($cookies.kuansimLogIn) {
-    var logInCookie = JSON.parse($cookies.kuansimLogIn);
+  if ($cookies.user) {
+    var logInCookie = JSON.parse($cookies.user);
     var email = logInCookie.email;
     var name = logInCookie.name;
     verifyLogin(email, name);
