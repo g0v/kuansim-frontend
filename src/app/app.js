@@ -44,10 +44,8 @@ angular.module('kuansim', [
   };
 
   if ($cookies.user) {
-    var logInCookie = JSON.parse($cookies.user);
-    var email = logInCookie.email;
-    var name = logInCookie.name;
-    verifyLogin(email, name);
+    var cookie = JSON.parse($cookies.user);
+    verifyLogin(cookie.email, cookie.name);
   }
 
 });
