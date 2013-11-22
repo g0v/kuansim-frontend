@@ -1,10 +1,11 @@
 var navModule = angular.module('kuansim.nav', [
   'kuansim.user',
+  'kuansim.alert',
   'oauth',
   'ngCookies'
 ])
 
-.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, $cookies) {
+.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, $cookies, Alert) {
 
   $scope.isLoggingIn = false;
   $scope.currentUser = User;

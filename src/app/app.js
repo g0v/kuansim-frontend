@@ -7,6 +7,7 @@ angular.module('kuansim', [
   'kuansim.about',
   'kuansim.bookmark',
   'kuansim.issue',
+  'kuansim.alert',
   'ui.router',
   'ngCookies',
   'oauth'

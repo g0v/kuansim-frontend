@@ -1,7 +1,8 @@
 angular.module('kuansim.user', [
-])
+  'ui.router'
+]).
 
-.service('User', function () {
+service('User', function () {
   this.loggedIn = false;
   this.email = "";
   this.name = "";
@@ -18,8 +19,23 @@ angular.module('kuansim.user', [
     this.name = "";
   };
 
-})
+}).
 
-.controller('UserCtrl', function UserCtrl($scope) {
+controller('UserCtrl', function ($scope) {
+
+}).
+
+controller('UserProfileCtrl', function ($scope, $http) {
+
+  $scope.profile = {};
+
+  $http.get('/users/profile').
+    success(function (response) {
+      if (response.success) {
+        $scope.profile = response.profile;
+      } else {
+
+      }
+    });
+
 });
-

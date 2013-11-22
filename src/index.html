@@ -67,6 +67,14 @@
         </div>
       </div>
     </div>
+
+    <div style="margin-top: 80px" ng-controller="AlertCtrl">
+      <div ng-show="alert.hasAlert" class="alert" ng-class="{
+        'alert-success': alert.success, 'alert-danger': !alert.success}">
+        {{alert.message}}
+      </div>
+    </div>
+
     <div class="wrapper">
       <div class="container">
         <div ui-view></div>
