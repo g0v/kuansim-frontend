@@ -1,12 +1,16 @@
 var navModule = angular.module('kuansim.nav', [
-  'kuansim.user'
+  'kuansim.user',
+  'kuansim.alert',
+  'oauth',
+  'ngCookies'
 ])
 
-.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User) {
+.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, Alert) {
 
   $scope.isLoggingIn = false;
+  $scope.currentUser = User;
 
-  $scope.thirdPartySignIn = function(provider) {
+  $scope.logIn = function(provider) {
     $scope.isLoggingIn = true;
     OAuth.popup(provider, function(error, result) {
       if (error) {
@@ -29,11 +33,10 @@ var navModule = angular.module('kuansim.nav', [
 
   };
 
-  $scope.currentUser = User;
-
-  $scope.userLogout = function() {
-    $http.post('/users/sign_out', {email: User.email()}).
+  $scope.logOut = function() {
+    $http.get('/users/sign_out').
       success(function() {
+        User.logOut();
         window.location.href = '/';
       }).
       error(function(data) {

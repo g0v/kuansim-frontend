@@ -8,7 +8,8 @@
     "bootstrap": "~3.0.1",
     "angular-bootstrap": "~0.6.0",
     "angular-ui-router": "~0.2.0",
-    "angular-scenario": "~1.0.7"
+    "angular-scenario": "~1.0.7",
+    "angular-cookies": "~1.0.8"
   },
   "dependencies": {}
 }
