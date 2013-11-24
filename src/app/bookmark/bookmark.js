@@ -225,6 +225,7 @@ angular.module('kuansim.bookmark', [
       var updatedBookmark = {
         id: $scope.bookmarkId,
         title: $scope.bmTitle,
+        url: $scope.bmUrl,
         date_happened: $scope.bmDate.getTime(),
         location: $scope.bmLocation,
         description: $scope.bmDescription
