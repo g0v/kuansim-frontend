@@ -34,7 +34,7 @@ angular.module('kuansim', [
       url: '/issue',
       title: 'Kuansim Issue Timeline',
       templateUrl: 'issue/issue.tpl.html',
-      controller: 'IssueCtrl'
+      controller: 'IssueCtrl'.
     })
     .state('bookmark', {
       url: '/bookmarks',
