@@ -1,6 +1,5 @@
 angular.module('kuansim.user.profile', [
-  'kuansim.alert',
-  'kuansim.api'
+  'kuansim.alert'
 ]).
 
 controller('CurrentProfileCtrl', function ($scope, $http, Alert) {

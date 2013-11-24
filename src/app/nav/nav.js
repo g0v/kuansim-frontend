@@ -2,8 +2,7 @@ var navModule = angular.module('kuansim.nav', [
   'kuansim.user',
   'kuansim.alert',
   'oauth',
-  'ngCookies',
-  'kuansim.api'
+  'ngCookies'
 ])
 
 .controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, Alert) {

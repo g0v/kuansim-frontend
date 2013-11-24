@@ -1,7 +1,6 @@
 angular.module('kuansim.bookmark', [
   'ui.router',
-  'ui.bootstrap',
-  'kuansim.api'
+  'ui.bootstrap'
 ])
 
 .factory('Bookmark', function ($http) {
