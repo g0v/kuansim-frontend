@@ -1,6 +1,8 @@
 <div class="row-fluid">
   <div class="span6">
-    <img src="{{profile.image}}" alt="">
+    <img src="{{profile.image}}"
+      alt="Profile image not found"
+      onerror="this.onerror=null;this.src='/assets/img/profile-placeholder.jpg'">
     <div>{{profile.name}}</div>
     <div>{{profile.email}}</div>
     <div>{{profile.github}}</div>
