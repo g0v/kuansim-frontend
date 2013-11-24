@@ -4,22 +4,22 @@ angular.module('kuansim.bookmark', [
   'kuansim.api'
 ])
 
-.factory('Bookmark', function ($http, API) {
+.factory('Bookmark', function ($http) {
   return {
     getBookmark: function(id) {
-      return $http.get(API('/collections/bookmarks/' + id));
+      return $http.get('/collections/bookmarks/' + id);
     },
     getBookmarks: function() {
-      return $http.get(API('/collections/bookmarks'));
+      return $http.get('/collections/bookmarks');
     },
     createBookmark: function(bookmark) {
-      return $http.post(API('/collections/bookmarks'), bookmark);
+      return $http.post('/collections/bookmarks', bookmark);
     },
     deleteBookmark: function(bookmark) {
-      return $http.delete(API('/collections/bookmarks/' + bookmark.id));
+      return $http.delete('/collections/bookmarks/' + bookmark.id);
     },
     updateBookmark: function(bookmark) {
-      return $http.put(API('/collections/bookmarks/' + bookmark.id), bookmark);
+      return $http.put('/collections/bookmarks/' + bookmark.id, bookmark);
     }
   };
 })

@@ -6,7 +6,7 @@ var navModule = angular.module('kuansim.nav', [
   'kuansim.api'
 ])
 
-.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, Alert, API) {
+.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, Alert) {
 
   $scope.isLoggingIn = false;
   $scope.currentUser = User;
@@ -17,7 +17,7 @@ var navModule = angular.module('kuansim.nav', [
       if (error) {
         console.log(error);
       } else {
-        $http.post(API('/users/authenticate'), {
+        $http.post('/users/authenticate', {
           provider: provider,
           access: result.access_token
         }).
@@ -35,7 +35,7 @@ var navModule = angular.module('kuansim.nav', [
   };
 
   $scope.logOut = function() {
-    $http.get(API('/users/sign_out')).
+    $http.get('/users/sign_out').
       success(function() {
         User.logOut();
         window.location.href = '/';

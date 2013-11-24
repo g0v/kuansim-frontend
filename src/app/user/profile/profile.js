@@ -3,11 +3,11 @@ angular.module('kuansim.user.profile', [
   'kuansim.api'
 ]).
 
-controller('CurrentProfileCtrl', function ($scope, $http, Alert, API) {
+controller('CurrentProfileCtrl', function ($scope, $http, Alert) {
 
   $scope.profile = {};
 
-  $http.get(API('/users/profile')).
+  $http.get('/users/profile').
     success(function (response) {
       if (response.success) {
         $scope.profile = response.profile;

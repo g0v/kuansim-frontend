@@ -3,7 +3,7 @@ angular.module('kuansim.issue', [
   'kuansim.api'
 ])
 
-.directive('timeline', function ($timeout, $http, API) {
+.directive('timeline', function ($timeout, $http) {
   return {
     restrict: 'A',
     scope: {
@@ -14,7 +14,7 @@ angular.module('kuansim.issue', [
         if (timelineIssue) {
           console.log(">>>", timelineIssue);
           $('#issue').empty();
-          $http.get(API('/collections/issues/' + timelineIssue)).success(function (response) {
+          $http.get('/collections/issues/' + timelineIssue).success(function (response) {
             scope.sampleJson = response;
             $timeout(function() {
               createStoryJS({
@@ -33,9 +33,9 @@ angular.module('kuansim.issue', [
   };
 })
 
-.controller('IssueCtrl', function IssueCtrl($scope, $http, API) {
+.controller('IssueCtrl', function IssueCtrl($scope, $http) {
 
-  $http.get(API('/collections/issues')).success(function (response) {
+  $http.get('/collections/issues').success(function (response) {
     $scope.issues = response;
     $scope.selectedIssue = $scope.issues[0];
     $scope.selectedIssueId = $scope.selectedIssue.id;

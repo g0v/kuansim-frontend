@@ -9,7 +9,6 @@ angular.module('kuansim', [
   'kuansim.issue',
   'kuansim.alert',
   'kuansim.user.profile',
-  'kuansim.api',
   'ui.router',
   'ngCookies',
   'oauth'
@@ -60,12 +59,12 @@ angular.module('kuansim', [
 
 })
 
-.run(function ($rootScope, $state, OAuth, $cookies, User, $http, Alert, API) {
+.run(function ($rootScope, $state, OAuth, $cookies, User, $http, Alert) {
   $rootScope.state = $state;
   OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
 
   var verifyLogin = function(email, name) {
-    $http.get(API('/users/verify')).
+    $http.get('/users/verify').
       success(function(response) {
         if (!response.success) {
           Alert.setFromResponse(response);
