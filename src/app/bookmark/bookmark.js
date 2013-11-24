@@ -144,6 +144,7 @@ angular.module('kuansim.bookmark', [
       var bookmark = {
         title: $scope.bmTitle,
         date_happened: $scope.bmDate.getTime(),
+        url: $scope.bmUrl,
         location: $scope.bmLocation,
         description: $scope.bmDescription
       };
@@ -174,6 +175,7 @@ angular.module('kuansim.bookmark', [
         var bm = data.event;
         $scope.bmTitle = bm.title;
         $scope.bmDateStr = bm.date_happened.split("T")[0];
+        $scope.bmUrl = bm.url;
         $scope.bmLocation = bm.location;
         $scope.bmDescription = bm.description;
       } else {
