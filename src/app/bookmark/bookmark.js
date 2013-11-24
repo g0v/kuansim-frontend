@@ -3,7 +3,7 @@ angular.module('kuansim.bookmark', [
   'ui.bootstrap'
 ])
 
-.factory('Bookmark', function($http) {
+.factory('Bookmark', function ($http) {
   return {
     getBookmark: function(id) {
       return $http.get('/collections/bookmarks/' + id);
@@ -239,27 +239,4 @@ angular.module('kuansim.bookmark', [
       BookmarkAlerts.clearAlert();
     }
   };
-})
-
-.config(function ($stateProvider) {
-  $stateProvider
-    .state('bookmark', {
-      url: '/bookmarks',
-      title: 'Bookmarks',
-      templateUrl: 'bookmark/bookmark.tpl.html',
-      controller: 'BookmarkCtrl'
-    })
-    .state('bookmarkCreate', {
-      url: '/bookmarks/create',
-      title: 'Bookmarks',
-      templateUrl: 'bookmark/bookmark_create.tpl.html',
-      controller: 'BookmarkCreateCtrl'
-    })
-    .state('bookmarkUpdate', {
-      url: '/bookmarks/update/:id',
-      title: 'Bookmarks',
-      templateUrl: 'bookmark/bookmark_update.tpl.html',
-      controller: 'BookmarkUpdateCtrl'
-    })
-    ;
 });

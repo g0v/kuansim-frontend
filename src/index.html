@@ -16,64 +16,9 @@
     <script type="text/javascript" src="assets/js/oauth.js"></script>
   </head>
   <body>
-    <div id="nav">
-      <div id="banner">
-        <i class="glyphicon glyphicon-heart"></i>
-        <a href="" ui-sref="index">
-          Kuansim
-        </a>
-      </div>
-      <div id="menu" ng-controller="NavCtrl">
-        <div class="btn-group navigation">
-          <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
-            Bookmark <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#/bookmarks">List</a></li>
-            <li><a href="#/bookmarks/create">Create</a></li>
-          </ul>
-        </div>
+    <div id="nav" ng-include="'nav/nav.tpl.html'"></div>
 
-        <div class="btn-group navigation issue">
-          <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
-            Issues <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#/issue">Timeline</a></li>
-          </ul>
-        </div>
-
-        <div class="btn-group login">
-          <button type="button"
-                  ng-class="{'btn-success': !currentUser.loggedIn,
-                             'disabled': isLoggingIn,
-                             'btn-primary': currentUser.loggedIn}"
-                  class="btn btn-sm dropdown-toggle"
-                  data-toggle="dropdown">
-            <span ng-show="currentUser.loggedIn">{{currentUser.name}}</span>
-            <span ng-show="!currentUser.loggedIn">
-              <span ng-show="isLoggingIn">Logging in...</span>
-              <span ng-hide="isLoggingIn">Login</span>
-            </span>
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu pull-right" role="menu" ng-show="currentUser.loggedIn">
-            <li><a href="#" ng-click="logOut()">Logout</a></li>
-          </ul>
-          <ul class="dropdown-menu pull-right" role="menu" ng-hide="currentUser.loggedIn">
-            <li><a href="" class="zocial google" ng-click="logIn('google')">Sign in with Google</a></li>
-            <li><a href="" class="zocial facebook" ng-click="logIn('facebook')">Sign in with Facebook</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top: 80px" ng-controller="AlertCtrl">
-      <div ng-show="alert.hasAlert" class="alert" ng-class="{
-        'alert-success': alert.success, 'alert-danger': !alert.success}">
-        {{alert.message}}
-      </div>
-    </div>
+    <ng-include src="'alert/alert.tpl.html'"></ng-include>
 
     <div class="wrapper">
       <div class="container">
