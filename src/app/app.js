@@ -27,27 +27,24 @@ angular.module('kuansim', [
 
 })
 
-.run(function ($rootScope, $state, OAuth, $cookies, User, $http) {
+.run(function ($rootScope, $state, OAuth, $cookies, User, $http, Alert) {
   $rootScope.state = $state;
   OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
 
+  console.log($cookies['X-XSRF-TOKEN']);
+
   var verifyLogin = function(email, name) {
-    $http.post('/users/verify', {
-      email: email
-    }).
-    success(function(data) {
-      if (!data.success) {
-        console.log(data.message);
-      } else {
-        User.logIn(email, name);
-      }
-    });
+    $http.get('/users/verify').
+      success(function(response) {
+        if (!response.success) {
+          Alert.setFromResponse(response);
+        } else {
+          User.logIn(response.email, response.name);
+        }
+      });
   };
 
-  if ($cookies.user) {
-    var cookie = JSON.parse($cookies.user);
-    verifyLogin(cookie.email, cookie.name);
-  }
+  verifyLogin();
 
 });
 

@@ -23,19 +23,4 @@ service('User', function () {
 
 controller('UserCtrl', function ($scope) {
 
-}).
-
-controller('UserProfileCtrl', function ($scope, $http) {
-
-  $scope.profile = {};
-
-  $http.get('/users/profile').
-    success(function (response) {
-      if (response.success) {
-        $scope.profile = response.profile;
-      } else {
-
-      }
-    });
-
 });

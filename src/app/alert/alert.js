@@ -7,14 +7,19 @@
     this.hasAlert = false;
 
     this.setAlert = function(message, success) {
-      this.hasAlert = true;
       this.message = message;
       this.success = success;
+      this.hasAlert = this.message !== "";
     };
 
     this.clearAlert = function() {
       this.hasAlert = false;
       this.message = "";
+    };
+
+    // Use for cleaner code
+    this.setFromResponse = function(response) {
+      this.setAlert((response.message) ? response.message : "", response.success);
     };
 
   });
