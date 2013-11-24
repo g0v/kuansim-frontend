@@ -33,17 +33,6 @@ angular.module('kuansim.issue', [
   };
 })
 
-.config(function ($stateProvider) {
-  $stateProvider
-    .state('issue', {
-      url: '/issue',
-      title: 'Kuansim Issue Timeline',
-      templateUrl: 'issue/issue.tpl.html',
-      controller: 'IssueCtrl'
-    })
-    ;
-})
-
 .controller('IssueCtrl', function IssueCtrl($scope, $http, API) {
 
   $http.get(API('/collections/issues')).success(function (response) {
