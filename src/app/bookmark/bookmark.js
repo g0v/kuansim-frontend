@@ -114,6 +114,9 @@ angular.module('kuansim.bookmark', [
   $scope.alertMessage = BookmarkAlerts.getAlert().message;
   BookmarkAlerts.clearAlert();
 
+  var today = new Date();
+  $scope.bmDateStr = today.getUTCFullYear() + "-" + (today.getUTCMonth()+1) + "-" + today.getUTCDate();
+
   var callbacks = {
     success: function(data, status) {
       if (data.success) {
