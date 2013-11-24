@@ -11,5 +11,4 @@ form.navbar-form.navbar-left(role="search")
 ul.nav.navbar-nav.navbar-right
   li(ng-class="getClass('/about')")
     a(ng-href='#/about') 關於
-  li(ng-class="getClass('/login')")
-    a(href='#/login') 登入
+  li(ng-include="'/partials/app/login.html'")

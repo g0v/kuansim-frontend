@@ -1,0 +1,19 @@
+button.navbar-btn.btn-sm.dropdown-toggle(type='button',
+                                    ng-class='{ \'btn-success\': !currentUser.loggedIn, \'disabled\': isLoggingIn, \'btn-primary\': currentUser.loggedIn}',
+                                    data-toggle='dropdown')
+  span(ng-show='currentUser.loggedIn')
+    {{currentUser.name}}
+  span(ng-show='!currentUser.loggedIn')
+    span(ng-show='isLoggingIn')
+      | Logging in...
+    span(ng-hide='isLoggingIn')
+      | Login
+  span.caret
+ul.dropdown-menu.pull-right(role='menu', ng-show='currentUser.loggedIn')
+  li
+    a(href='#', ng-click='logOut()') Logout
+ul.dropdown-menu.pull-right(role='menu', ng-hide='currentUser.loggedIn')
+  li
+    a.zocial.google(href='', ng-click='logIn("google")') Sign in with Google
+  li
+    a.zocial.facebook(href='', ng-click='logIn("facebook")') Sign in with Facebook
