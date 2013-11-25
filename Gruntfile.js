@@ -19,6 +19,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   /**
    * Load in our build configuration file.
@@ -408,6 +409,22 @@ module.exports = function ( grunt ) {
       }
     },
 
+    /*
+     * Grunt connect configs
+     */
+    connect: {
+      options: {
+        port: 8000,
+        base: './app'
+      },
+      server: {
+        options: {
+          keepalive: true
+        }
+      },
+      testserver: {}
+    },
+
     /**
      * The `index` task compiles the `index.html` file as a Grunt template. CSS
      * and JS files co-exist here but they get split apart later.
@@ -660,7 +677,7 @@ module.exports = function ( grunt ) {
     'clean', 'html2js', 'jshint', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_fixturejs',
-    'index:build', 'karmaconfig', 'karma:continuous', 'karma:e2e'
+    'index:build'
   ]);
 
   grunt.registerTask( 'quick', [
@@ -669,6 +686,8 @@ module.exports = function ( grunt ) {
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_fixturejs',
     'index:build', 'karmaconfig'
   ]);
+
+  // grunt.registerTask('e2e-test', ['connect:testserver', 'karma:e2e']);
 
   /**
    * The `compile` task gets your app ready for deployment by concatenating and

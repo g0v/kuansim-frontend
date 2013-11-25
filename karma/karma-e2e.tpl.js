@@ -9,6 +9,8 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
+      'vendor/angular/angular.js',
+      'vendor/angular-ui-router/release/angular-ui-router.js',
       // Include the ng-scenario library and adapter
       // Remove these when `karma-ng-scenario` can be included:
       // https://github.com/karma-runner/grunt-karma/issues/13
@@ -22,7 +24,7 @@ module.exports = function ( karma ) {
       {pattern: '<%= grunt.config( "build_dir" ) %>/**/*', watched: false, included: false, served: true}
     ],
 
-    //frameworks: [ 'ng-scenario' ],
+    // frameworks: [ 'ng-scenario' ],
     plugins: [ 'karma-firefox-launcher', 'karma-chrome-launcher', 'karma-coffee-preprocessor' ],
     preprocessors: {
       '**/*.coffee': 'coffee'
@@ -33,13 +35,11 @@ module.exports = function ( karma ) {
      */
     reporters: 'dots',
 
-    /**
-     * On which port should the browser connect, on which port is the test runner
-     * operating, and what is the URL path for the browser to use.
-     */
-    port: 9020,
-    runnerPort: 9102,
-    urlRoot: '/',
+    urlRoot: '/e2e/',
+
+    proxies: {
+      '/': 'http://localhost:3000/'
+    },
 
     /**
      * Disable file watching by default.
