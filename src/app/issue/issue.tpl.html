@@ -1,8 +1,19 @@
-<select class="form-control"
-        ng-model="selectedIssue"
-        name="issueSelect"
-        ng-options="issue.title for issue in issues"></select>
-
-<div timeline timeline-issue="selectedIssue.id">
-  <div id="issue"></div>
+<div>
+  <h4>Issues</h4>
+  <table class="table issues-tbl">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="issue in issues" ng-click="linkToEditForm(issue.id)">
+        <td>{{issue.title}}</td>
+        <td>{{issue.description}}</td>
+        <td><span class="glyphicon glyphicon-chevron-right"></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-default" ng-click="linkToEditForm()">Add Issue</button>
 </div>

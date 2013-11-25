@@ -32,15 +32,80 @@ angular.module('kuansim.issue', [
   };
 })
 
-.controller('IssueCtrl', function IssueCtrl($scope, $http) {
+.factory('Issue', function ($http) {
+  return {
+    getIssue: function(id) {
+      return $http.get('/collections/issues/' + id);
+    },
+    getIssues: function() {
+      return $http.get('/collections/issues');
+    },
+    createIssue: function(issue) {
+      return $http.post('/collections/issues', issue);
+    },
+    deleteIssue: function(issue) {
+      return $http.delete('/collections/issues/' + issue.id);
+    },
+    updateIssue: function(issue) {
+      return $http.put('/collections/issues/' + issue.id, issue);
+    }
+  };
+})
 
-  $http.get('/collections/issues').success(function (response) {
+.controller('IssueCtrl', function IssueCtrl($scope, $location, $http, Issue) {
+
+  Issue.getIssues().success(function (response) {
     $scope.issues = response;
-    $scope.selectedIssue = $scope.issues[0];
-    $scope.selectedIssueId = $scope.selectedIssue.id;
   });
 
+  $scope.linkToEditForm = function(id) {
+    if (id) {
+      $location.path('issue/' + id);
+    } else {
+      $location.path('issue/create');
+    }
+  };
 
 })
+
+.controller('IssueViewCtrl', function IssueViewCtrl($scope, $stateParams, Issue) {
+  Issue.getIssues()
+    .success(function(data, status) {
+      $scope.issues = data;
+      $scope.selectedIssue = $scope.issues[0];
+      $scope.selectedIssueId = $scope.selectedIssue.id;
+    });
+})
+
+.controller('IssueFormCtrl', function IssueFormCtrl($scope, $location, Issue, Alert) {
+
+  $scope.createIssue = function() {
+    if ($scope.issueTitle && $scope.issueDescription) {
+      var issue = {
+        title: $scope.issueTitle,
+        description: $scope.issueDescription
+      };
+      Issue.createIssue(issue)
+        .success(function(data, status) {
+          if (data.success) {
+            Alert.setFromResponse({
+              message: "Issue successfully created.",
+              success: true
+            });
+            $location.path("issue");
+          } else {
+            Alert.setFromResponse({
+              message: data.error,
+              success: false
+            });
+          }
+        });
+
+    } else {
+      console.log("Failed to create issue");
+    }
+  };
+})
+
 
 ;

@@ -1,0 +1,16 @@
+<div style="margin-top: 10px">
+
+  <form role="form" class="issue-form">
+    <div class="form-group">
+      <label for="issueTitle">Title</label>
+      <input ng-model="issueTitle" type="text" class="form-control" id="issueTitle" placeholder="Enter a title">
+    </div>
+
+    <div class="form-group">
+      <label for="issueDescription">Description</label>
+      <textarea ng-model="issueDescription" class="form-control" id="issueDescription" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-default" ng-click="createIssue()">Create Issue</button>
+  </form>
+</div>

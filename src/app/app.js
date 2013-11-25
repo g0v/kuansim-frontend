@@ -32,9 +32,21 @@ angular.module('kuansim', [
     })
     .state('issue', {
       url: '/issue',
-      title: 'Kuansim Issue Timeline',
+      title: 'Kuansim Issues',
       templateUrl: 'issue/issue.tpl.html',
       controller: 'IssueCtrl'
+    })
+    .state('issueCreate', {
+      url: '/issue/create',
+      title: 'Kuansim Create Issue',
+      templateUrl: 'issue/issue_create.tpl.html',
+      controller: 'IssueFormCtrl'
+    })
+    .state('issueView', {
+      url: '/issue/:id',
+      title: 'Kuansim View Issue',
+      templateUrl: 'issue/issue_view.tpl.html',
+      controller: 'IssueViewCtrl'
     })
     .state('bookmark', {
       url: '/bookmarks',
