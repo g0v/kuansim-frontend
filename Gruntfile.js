@@ -677,7 +677,7 @@ module.exports = function ( grunt ) {
     'clean', 'html2js', 'jshint', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_fixturejs',
-    'index:build', 'karmaconfig', 'karma:continuous', 'karma:e2e'
+    'index:build'
   ]);
 
   grunt.registerTask( 'quick', [
