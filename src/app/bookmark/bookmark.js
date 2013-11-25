@@ -114,6 +114,9 @@ angular.module('kuansim.bookmark', [
   $scope.alertMessage = BookmarkAlerts.getAlert().message;
   BookmarkAlerts.clearAlert();
 
+  var today = new Date();
+  $scope.bmDateStr = today.getUTCFullYear() + "-" + (today.getUTCMonth()+1) + "-" + today.getUTCDate();
+
   var callbacks = {
     success: function(data, status) {
       if (data.success) {
@@ -144,6 +147,7 @@ angular.module('kuansim.bookmark', [
       var bookmark = {
         title: $scope.bmTitle,
         date_happened: $scope.bmDate.getTime(),
+        url: $scope.bmUrl,
         location: $scope.bmLocation,
         description: $scope.bmDescription
       };
@@ -174,6 +178,7 @@ angular.module('kuansim.bookmark', [
         var bm = data.event;
         $scope.bmTitle = bm.title;
         $scope.bmDateStr = bm.date_happened.split("T")[0];
+        $scope.bmUrl = bm.url;
         $scope.bmLocation = bm.location;
         $scope.bmDescription = bm.description;
       } else {
@@ -223,6 +228,7 @@ angular.module('kuansim.bookmark', [
       var updatedBookmark = {
         id: $scope.bookmarkId,
         title: $scope.bmTitle,
+        url: $scope.bmUrl,
         date_happened: $scope.bmDate.getTime(),
         location: $scope.bmLocation,
         description: $scope.bmDescription
