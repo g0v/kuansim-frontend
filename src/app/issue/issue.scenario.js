@@ -1,4 +1,4 @@
-xdescribe('issue scenarios', function () {
+describe('issue scenarios', function () {
   it('creates a new issue', function () {
 
     // Given I am on the home page
