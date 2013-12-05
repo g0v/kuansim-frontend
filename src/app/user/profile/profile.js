@@ -1,8 +1,8 @@
 angular.module('kuansim.user.profile', [
   'kuansim.alert'
-]).
+])
 
-controller('CurrentProfileCtrl', function ($scope, $http, Alert) {
+.controller('CurrentProfileCtrl', function ($scope, $http, Alert) {
 
   $scope.profile = {};
 
@@ -15,4 +15,16 @@ controller('CurrentProfileCtrl', function ($scope, $http, Alert) {
       }
     });
 
-});
+})
+
+.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('profile.view', {
+      url: '/view',
+      templateUrl: 'user/profile/profile_view.tpl.html',
+      title: 'User Profile - View',
+      controller: 'CurrentProfileCtrl'
+    });
+})
+
+;
