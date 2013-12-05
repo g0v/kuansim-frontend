@@ -24,10 +24,12 @@
 
   });
 
-  alerts.controller('AlertCtrl', function ($scope, Alert) {
+  alerts.controller('AlertCtrl', function ($scope, $rootScope, Alert) {
 
     $scope.alert = Alert;
-    $scope.alert.clearAlert();
+    $rootScope.$on("$locationChangeStart", function (event, newUrl) {
+      $scope.alert.clearAlert();
+    });
 
   });
 })();
