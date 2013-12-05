@@ -23,34 +23,6 @@ angular.module('kuansim.bookmark', [
   };
 })
 
-.factory('BookmarkAlerts', function($rootScope) {
-  var alert = {
-    message: "",
-    success: true
-  };
-  var alertExists = function() {
-    return alert.message !== "";
-  };
-  var setAlert = function(message, success) {
-    alert.message = message;
-    alert.success = success;
-  };
-  var getAlert = function() {
-    return alert;
-  };
-  var clearAlert = function() {
-    alert.message = "";
-  };
-
-  return {
-    alert: alert,
-    alertExists: alertExists,
-    setAlert: setAlert,
-    getAlert: getAlert,
-    clearAlert: clearAlert
-  };
-})
-
 .controller('BookmarkCtrl', function BookmarkCtrl($scope, $rootScope, Bookmark, Alert) {
 
   $scope.bookmarks = [];
@@ -113,7 +85,7 @@ angular.module('kuansim.bookmark', [
   var callbacks = {
     success: function(data, status) {
       if (data.success) {
-        Alert.setFromResponse({
+        Alert.setFromResponseWithLocationChange({
           message: "Successfully created bookmark!",
           success: true
         });
@@ -133,7 +105,7 @@ angular.module('kuansim.bookmark', [
     }
   };
 
-  $scope.createBookmark = function() {
+  $scope.submitBookmark = function() {
     if ($scope.bmTitle && $scope.bmDateStr && $scope.bmLocation) {
       var dateList = $scope.bmDateStr.split("-");
       $scope.bmDate = new Date(dateList[0], dateList[1], dateList[2]);
@@ -172,7 +144,7 @@ angular.module('kuansim.bookmark', [
         $scope.bmLocation = bm.location;
         $scope.bmDescription = bm.description;
       } else {
-        Alert.setFromResponse(data);
+        Alert.setFromResponseWithLocationChange(data);
         $location.path("bookmarks");
       }
     },
@@ -186,7 +158,7 @@ angular.module('kuansim.bookmark', [
   var putCallbacks = {
     success: function(data, status) {
       if (data.success) {
-        Alert.setFromResponse({
+        Alert.setFromResponseWithLocationChange({
           message: "Successfully updated bookmark!",
           success: true
         });
@@ -200,7 +172,7 @@ angular.module('kuansim.bookmark', [
     }
   };
 
-  $scope.updateBookmark = function() {
+  $scope.submitBookmark = function() {
 
     if ($scope.bmTitle && $scope.bmDateStr && $scope.bmLocation) {
       var dateList = $scope.bmDateStr.split("-");

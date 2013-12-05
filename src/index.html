@@ -20,10 +20,9 @@
   <body>
     <div id="nav" ng-include="'nav/nav.tpl.html'"></div>
 
-    <ng-include src="'alert/alert.tpl.html'"></ng-include>
-
     <div class="wrapper">
       <div class="container">
+        <ng-include src="'alert/alert.tpl.html'"></ng-include>
         <div ui-view></div>
       </div>
     </div>
