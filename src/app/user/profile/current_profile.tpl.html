@@ -1,5 +1,24 @@
-<div class="row-fluid">
-  <div class="span6">
+<div class="row">
+  <div class="col-lg-3" style="position: fixed; border-right: 1px solid #999; padding-right: 0; max-width: 250px">
+    <div class="sidebar-profile">
+      <div style="width: 40%;">
+        <img src="{{profile.image}}" style="margin-left: 10px; margin-bottom: 10px; max-width: 60px; float: left; border-radius: 2px;">
+      </div>
+      <div style="float: left; width: 60%; padding-left: 10px;">
+        <h5>{{profile.name}}</h5>
+      </div>
+    </div>
+    <hr style="width: 70%; clear: both;">
+    <ul class="nav nav-pills nav-stacked" style="clear: left;">
+      <li class="active"><a href="">Profile</a></li>
+      <li><a href="">Events</a></li>
+      <li><a href="">Issues</a></li>
+    </ul>
+
+    <div ui-view></div>
+  </div>
+
+  <!-- <div class="span6">
     <img src="{{profile.image}}"
       alt="Profile image not found"
       onError="this.onerror=null;this.src='/assets/img/profile-placeholder.jpg'">
@@ -7,5 +26,5 @@
     <div>{{profile.email}}</div>
     <div>{{profile.github}}</div>
     <div>{{profile.website}}</div>
-  </div>
+  </div> -->
 </div>
