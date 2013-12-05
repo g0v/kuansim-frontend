@@ -63,7 +63,7 @@ angular.module('kuansim', [
     .state('bookmarkUpdate', {
       url: '/bookmarks/update/:id',
       title: 'Bookmarks',
-      templateUrl: 'bookmark/bookmark_update.tpl.html',
+      templateUrl: 'bookmark/bookmark_create.tpl.html',
       controller: 'BookmarkUpdateCtrl'
     });
 })

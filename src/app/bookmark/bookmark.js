@@ -51,25 +51,24 @@ angular.module('kuansim.bookmark', [
   };
 })
 
-.controller('BookmarkCtrl', function BookmarkCtrl($scope, $rootScope, Bookmark, BookmarkAlerts) {
+.controller('BookmarkCtrl', function BookmarkCtrl($scope, $rootScope, Bookmark, Alert) {
 
   $scope.bookmarks = [];
-  $scope.hasAlert = BookmarkAlerts.alertExists();
-  $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-  $scope.alertMessage = BookmarkAlerts.getAlert().message;
-  BookmarkAlerts.clearAlert();
 
   var getAllBookmarks = {
     success: function(data, status) {
-      $scope.bookmarks = data.events;
+      if (data.success) {
+        $scope.bookmarks = data.events;
+      } else {
+        Alert.setFromResponse(data);
+      }
     },
     error: function(data, status) {
       $scope.bookmarks = [];
-      BookmarkAlerts.setAlert("Sorry, there was a problem retreiving bookmarks.", false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse({
+        message: "Sorry, there was a problem retreiving bookmarks.",
+        success: false
+      });
     }
   };
 
@@ -77,27 +76,23 @@ angular.module('kuansim.bookmark', [
     Bookmark.getBookmarks().success(getAllBookmarks.success).error(getAllBookmarks.error);
   };
 
-  $scope.getAllBookmarks();
-
   var deleteBookmarkCallbacks = {
     success: function(data, status) {
       if (data.success) {
-        BookmarkAlerts.setAlert("Successfully deleted bookmark.", true);
+        Alert.setFromResponse({
+          message: "Successfully deleted bookmark.",
+          success: true
+        });
       } else {
-        BookmarkAlerts.setAlert(data.error, false);
+        Alert.setFromResponse(data);
       }
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
       $scope.getAllBookmarks();
     },
     error: function(data, status) {
-      BookmarkAlerts.setAlert("Sorry, there was a problem deleting the bookmark.", false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse({
+        message: "Sorry, there was a problem deleting the bookmark.",
+        success: false
+      });
     }
   };
 
@@ -105,37 +100,36 @@ angular.module('kuansim.bookmark', [
     Bookmark.deleteBookmark(bookmark).success(deleteBookmarkCallbacks.success).error(deleteBookmarkCallbacks.error);
   };
 
+  $scope.getAllBookmarks();
+
 })
 
-.controller('BookmarkCreateCtrl', function BookmarkCreateCtrl($scope, $rootScope, $location, Bookmark, BookmarkAlerts) {
-
-  $scope.hasAlert = BookmarkAlerts.alertExists();
-  $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-  $scope.alertMessage = BookmarkAlerts.getAlert().message;
-  BookmarkAlerts.clearAlert();
+.controller('BookmarkCreateCtrl', function BookmarkCreateCtrl($scope, $rootScope, $location, Bookmark, Alert) {
 
   var today = new Date();
   $scope.bmDateStr = today.getUTCFullYear() + "-" + (today.getUTCMonth()+1) + "-" + today.getUTCDate();
+  $scope.submitButtonText = 'Create Bookmark';
 
   var callbacks = {
     success: function(data, status) {
       if (data.success) {
-        BookmarkAlerts.setAlert("Successfully created bookmark!", true);
+        Alert.setFromResponse({
+          message: "Successfully created bookmark!",
+          success: true
+        });
         $location.path("bookmarks");
       } else {
-        BookmarkAlerts.setAlert("Failed to create bookmark. " + data.error, false);
-        $scope.hasAlert = BookmarkAlerts.alertExists();
-        $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-        $scope.alertMessage = BookmarkAlerts.getAlert().message;
-        BookmarkAlerts.clearAlert();
+        Alert.setFromResponse({
+          message: "Failed to create bookmark. " + data.error,
+          success: false
+        });
       }
     },
     error: function(data, status) {
-      BookmarkAlerts.setAlert("Failed to create bookmark.", false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse({
+        message: "Failed to create bookmark.",
+        success: false
+      });
     }
   };
 
@@ -154,23 +148,19 @@ angular.module('kuansim.bookmark', [
       Bookmark.createBookmark(bookmark).success(callbacks.success).error(callbacks.error);
 
     } else {
-      BookmarkAlerts.setAlert("Failed to create bookmark. Cannot have empty fields.", false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse({
+        message: "Failed to create bookmark. Cannot have empty fields.",
+        success: false
+      });
     }
   };
 
 })
 
-.controller('BookmarkUpdateCtrl', function BookmarkCreateCtrl($scope, $location, $stateParams, Bookmark, BookmarkAlerts) {
-  $scope.hasAlert = BookmarkAlerts.alertExists();
-  $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-  $scope.alertMessage = BookmarkAlerts.getAlert().message;
-  BookmarkAlerts.clearAlert();
+.controller('BookmarkUpdateCtrl', function BookmarkCreateCtrl($scope, $location, $stateParams, Bookmark, Alert) {
 
   $scope.bookmarkId = $stateParams.id;
+  $scope.submitButtonText = 'Update';
 
   var getCallbacks = {
     success: function(data, status) {
@@ -182,16 +172,12 @@ angular.module('kuansim.bookmark', [
         $scope.bmLocation = bm.location;
         $scope.bmDescription = bm.description;
       } else {
-        BookmarkAlerts.setAlert(data.error, false);
+        Alert.setFromResponse(data);
         $location.path("bookmarks");
       }
     },
     error: function(data, status) {
-      BookmarkAlerts.setAlert(data.error, false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse(data);
     }
   };
 
@@ -200,22 +186,17 @@ angular.module('kuansim.bookmark', [
   var putCallbacks = {
     success: function(data, status) {
       if (data.success) {
-        BookmarkAlerts.setAlert("Successfully updated bookmark!", true);
+        Alert.setFromResponse({
+          message: "Successfully updated bookmark!",
+          success: true
+        });
         $location.path("bookmarks");
       } else {
-        BookmarkAlerts.setAlert(data.error, false);
-        $scope.hasAlert = BookmarkAlerts.alertExists();
-        $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-        $scope.alertMessage = BookmarkAlerts.getAlert().message;
-        BookmarkAlerts.clearAlert();
+        Alert.setFromResponse(data);
       }
     },
     error: function(data, status) {
-      BookmarkAlerts.setAlert(data.error, false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse(data);
     }
   };
 
@@ -236,11 +217,10 @@ angular.module('kuansim.bookmark', [
       Bookmark.updateBookmark(updatedBookmark).success(putCallbacks.success).error(putCallbacks.error);
 
     } else {
-      BookmarkAlerts.setAlert("Failed to update bookmark. Cannot have empty fields.", false);
-      $scope.hasAlert = BookmarkAlerts.alertExists();
-      $scope.alertSuccess = BookmarkAlerts.getAlert().success;
-      $scope.alertMessage = BookmarkAlerts.getAlert().message;
-      BookmarkAlerts.clearAlert();
+      Alert.setFromResponse({
+        message: "Failed to update bookmark. Cannot have empty fields.",
+        success: false
+      });
     }
   };
 });
