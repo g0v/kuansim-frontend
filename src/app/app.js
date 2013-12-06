@@ -65,6 +65,12 @@ angular.module('kuansim', [
       title: 'Bookmarks',
       templateUrl: 'bookmark/bookmark_create.tpl.html',
       controller: 'BookmarkUpdateCtrl'
+    })
+    .state('profile.view', {
+      url: '/view',
+      templateUrl: 'user/profile/profile_view.tpl.html',
+      title: 'User Profile - View',
+      controller: 'CurrentProfileCtrl'
     });
 })
 .controller('AppCtrl', function AppCtrl($scope, $location) {
