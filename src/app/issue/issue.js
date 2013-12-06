@@ -52,11 +52,19 @@ angular.module('kuansim.issue', [
     },
     updateIssue: function(issue) {
       return $http.put('/collections/issues/' + issue.id, issue);
+    },
+    followIssue: function(id) {
+      return $http.post('/users/issues/follow', {
+        id: id
+      });
+    },
+    getRelatedIssues: function(id) {
+      return $http.get('/collections/issues/' + id + '/related');
     }
   };
 })
 
-.controller('IssueCtrl', function IssueCtrl($scope, $location, $http, Issue) {
+.controller('IssueCtrl', function IssueCtrl($scope, $location, $http, Issue, Alert) {
 
   Issue.getIssues().success(function (response) {
     $scope.issues = response.issues;
@@ -68,6 +76,16 @@ angular.module('kuansim.issue', [
     } else {
       $location.path('issue/create');
     }
+  };
+
+  $scope.followIssue = function(issue) {
+    Issue.followIssue(issue.id).success(function (data) {
+      if (data.success) {
+        issue.isFollowed = true;
+      } else {
+        Alert.setFromResponse(data);
+      }
+    });
   };
 
 })
