@@ -81,7 +81,7 @@ angular.module('kuansim', [
         if (!response.success) {
           Alert.setFromResponse(response);
         } else {
-          User.logIn(response.email, response.name);
+          User.logIn(response.email, response.name, response.id);
         }
       });
   };

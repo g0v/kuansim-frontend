@@ -22,7 +22,7 @@ var navModule = angular.module('kuansim.nav', [
         }).
         success(function(data) {
           $scope.isLoggingIn = false;
-          User.logIn(data.email, data.name);
+          User.logIn(data.email, data.name, data.id);
           $window.location.reload();
         }).
         error(function(data) {

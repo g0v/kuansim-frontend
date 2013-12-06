@@ -8,10 +8,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="issue in issues" ng-click="linkToEditForm(issue.id)">
+      <tr ng-repeat="issue in issues">
         <td>{{issue.title}}</td>
         <td>{{issue.description}}</td>
-        <td><span class="glyphicon glyphicon-chevron-right"></span></td>
+        <td>
+          <a href="" ng-click="followIssue(issue)">
+            <span ng-hide="issue.isFollowed">
+              <span class="glyphicon glyphicon-eye-open"></span> Follow
+            </span>
+          </a>
+          <span ng-show="issue.isFollowed">
+            <span class="glyphicon glyphicon-check"></span> Followed
+          </span>
+        </td>
+        <td>
+          <a href="" ng-click="linkToEditForm(issue.id)">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>
