@@ -24,8 +24,40 @@ angular.module('kuansim.landing', [
 /**
  * And of course we define a controller for our route.
  */
-.controller('LandingCtrl', function LandingCtrl($scope) {
-  $scope.test = 'hey';
+.controller('LandingCtrl', function LandingCtrl($scope, $timeout) {
+
+  $scope.itemHovered = false;
+  $scope.jumboHeads = ['select', 'arrange', 'petition', 'action', 'review'];
+  $scope.jumboInfo = {
+    select: "Gather information related to different issues.",
+    arrange: "Arrange and organize the selected information as bookmarks.",
+    petition: "Find like-minded people.",
+    action: "Take action in the real world.",
+    review: "Review the course of an issue using timeline and track the current status of the issue."
+  };
+  $scope.jumboHead = "Kuansim";
+  $scope.jumboBody = "Kuansim is a place where concerned citizens can share and grow their ideas about social and political issues.";
+  
+  $scope.jumboOnEnter = function(hovered) {
+    $scope.jumboHead = capitalizeFirstLetter(hovered);
+    $scope.jumboBody = $scope.jumboInfo[hovered];
+    $scope.itemHovered = true;
+  };
+
+  $scope.jumboOnLeave = function() {
+    $timeout(function() {
+      if (!$scope.itemHovered) {
+        $scope.jumboHead = "Kuansim";
+        $scope.jumboBody = "Kuansim is a place where concerned citizens can share and grow their ideas about social and political issues.";
+      }
+    }, 1000);
+    $scope.itemHovered = false;
+  };
+
+  var capitalizeFirstLetter = function(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
 })
 
 ;

@@ -1,10 +1,23 @@
 <div class="action-block">
   <!-- <img src="assets/img/banner.jpg" alt="action" class="img-responsive"> -->
-  <div class="kuansim-banner-bg">
-  	<div class="kuansim-banner-icon-select"></div>
+  <div class="jumbotron" style="height: 250px;">
+    <h1>
+      <span class="glyphicon glyphicon-heart" ng-show="jumboHead == 'Kuansim'"></span>
+      {{jumboHead}}
+    </h1>
+    <p>{{jumboBody}}</p>
+  </div>
+  <div class="kuansim-banner-bg" style="margin-top: -50px;">
+    <div
+      class="kuansim-banner-icon-{{title}}"
+      ng-repeat="title in jumboHeads"
+      ng-mouseenter="jumboOnEnter(title)"
+      ng-mouseleave="jumboOnLeave()">
+    </div>
+<!--   	<div class="kuansim-banner-icon-select"></div>
   	<div class="kuansim-banner-icon-arrange"></div>
   	<div class="kuansim-banner-icon-petition"></div>
   	<div class="kuansim-banner-icon-action"></div>
-  	<div class="kuansim-banner-icon-review"></div>
+  	<div class="kuansim-banner-icon-review"></div> -->
   </div>
 </div>
