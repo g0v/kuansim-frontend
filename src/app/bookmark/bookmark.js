@@ -144,6 +144,7 @@ angular.module('kuansim.bookmark', [
         $scope.bmUrl = bm.url;
         $scope.bmLocation = bm.location;
         $scope.bmDescription = bm.description;
+        $scope.bmIssues = bm.issues;
       } else {
         Alert.setFromResponseWithLocationChange(data);
         $location.path("bookmarks");
