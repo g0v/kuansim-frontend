@@ -14,7 +14,7 @@ describe('navigation module', function() {
     });
 
     it('tests oauth.io function', function () {
-      scope.thirdPartySignIn('facebook');
+      scope.logIn('facebook');
       expect(oauth.popup).toHaveBeenCalled();
     });
 

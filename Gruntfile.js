@@ -687,7 +687,7 @@ module.exports = function ( grunt ) {
     'clean', 'html2js', 'jshint', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_fixturejs',
-    'index:build'
+    'index:build', 'karmaconfig', 'karma:continuous'
   ]);
 
   grunt.registerTask( 'quick', [
@@ -697,7 +697,7 @@ module.exports = function ( grunt ) {
     'index:build', 'karmaconfig'
   ]);
 
-  // grunt.registerTask('e2e-test', ['connect:testserver', 'karma:e2e']);
+  grunt.registerTask('e2e-test', ['connect:testserver', 'karma:e2e']);
 
   /**
    * The `compile` task gets your app ready for deployment by concatenating and

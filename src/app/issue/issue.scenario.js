@@ -1,8 +1,8 @@
 describe('issue scenarios', function () {
-  it('creates a new issue', function () {
+  xit('creates a new issue', function () {
 
     // Given I am on the home page
-    browser().navigateTo('/base/build/index.html');
+    browser().navigateTo('/');
 
     // When I follow "Create issue" dropdown link
     var issueBtn = element('#menu .btn-group.navigation.issue .dropdown-toggle', 'issue dropdown button');

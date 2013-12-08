@@ -2,7 +2,7 @@ describe('linking bookmark to issues', function () {
   it('has issues to select from', function () {
 
     // Given I am on the home page
-    browser().navigateTo('/base/build/index.html');
+    browser().navigateTo('/');
     // browser().navigateTo('/Users/raejin/kuansim-rails/kuansim-frontend/build/index.html');
 
     // When I follow "Create bookmark"
@@ -22,7 +22,7 @@ describe('linking bookmark to issues', function () {
     input('bmDateStr').enter(Date.now());
     input('bmLocation').enter('LAX, shooting, murder');
     input('bmDescription').enter("Federal officials charged the 23-year-old suspect in Friday's shooting rampage at Los Angeles International Airport");
-    input('bmIssue').enter("Issue0");
+    input('bmIssues').enter("Issue0");
     // And I press create bookmark
     element('form.bookmark-form button', 'bookmark submit btn').click();
 

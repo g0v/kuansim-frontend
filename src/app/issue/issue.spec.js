@@ -14,7 +14,7 @@ describe('issue module', function() {
       httpBackend.when('GET', '/collections/issues/3').respond(res);
     }));
 
-    it('pulls new issue data if dropdown menu changed', function () {
+    xit('pulls new issue data if dropdown menu changed', function () {
       // httpBackend.flush();
       scope.dummy = '1';
       var elm = compile('<div timeline timeline-issue="dummy"></div>')(scope);
@@ -30,7 +30,7 @@ describe('issue module', function() {
 
   });
 
-  describe('IssueCtrl', function () {
+  xdescribe('IssueCtrl', function () {
 
     var scope, ctrl, httpBackend, ctrlService, issuesList;
 
