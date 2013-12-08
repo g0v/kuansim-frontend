@@ -4,7 +4,7 @@
     <div class="col-lg-12">
       <div class="jumbotron">
         <h1>
-          <span class="glyphicon glyphicon-heart" ng-show="jumboHead == 'Kuansim'"></span>
+          <span class="glyphicon glyphicon-{{jumboIcons[itemHovered]}}"></span>
           {{jumboHead}}
         </h1>
         <p>{{jumboBody}}</p>
@@ -28,12 +28,17 @@
       <div class="jumbotron">
         <h2>Timelines</h2>
         <p>Chronological organization of the events associated with issues you care about.</p>
+        <a class="btn btn-primary btn-lg" href="#/issue" title="Issues">View issues</a>
       </div>
     </div>
     <div class="col-lg-6">
       <div class="jumbotron">
         <h2>Add Bookmarks from Anywhere</h2>
         <p>Bookmark articles and web pages about current events.</p>
+        <a class="btn btn-primary btn-lg" ng-href="{{bookmarkPluginJs}}" title="Kuansim Bookmark">
+          <span class="glyphicon glyphicon-plus"></span>
+          Drag to browser bookmark bar
+        </a>
       </div>
     </div>
   </div>

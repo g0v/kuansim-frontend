@@ -15,7 +15,7 @@ angular.module('kuansim.user.profile', [
 
 })
 
-.controller('CurrentProfileCtrl', function ($scope, Alert, Profile, User, Issue) {
+.controller('CurrentProfileCtrl', function ($scope, $location, Alert, Profile, User, Issue) {
 
   $scope.profile = {};
 
@@ -27,10 +27,26 @@ angular.module('kuansim.user.profile', [
     }
   });
 
+  $scope.isActive = function(route) {
+    return $location.path() == route;
+  };
+
 })
 
-.controller('CurrentProfileViewCtrl', function ($scope, Profile, User, Issue) {
-  
+.controller('CurrentProfileViewCtrl', function ($scope, Profile, User) {
+  User.userReady().then(function() {
+    $scope.username = User.name;
+    $scope.email = User.email;
+  });
+})
+
+.controller('CurrentProfileMyBookmarksCtrl', function ($scope, Profile, User, Bookmark) {
+
+
+
+})
+
+.controller('CurrentProfileMyIssuesCtrl', function ($scope, Profile, User, Issue) {
   /* Only get issues followed by current user once logged in */
   User.userReady().then(function() {
     Profile.getFollowedIssues(User.id).success(function (response) {
@@ -53,7 +69,6 @@ angular.module('kuansim.user.profile', [
 
     });
   });
-
 })
 
 ;

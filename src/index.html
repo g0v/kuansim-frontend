@@ -17,11 +17,11 @@
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
     <script type="text/javascript" src="assets/js/oauth.js"></script>
   </head>
-  <body>
+  <body style="background-color: #50647E">
     <div id="nav" ng-include="'nav/nav.tpl.html'"></div>
 
-    <div class="wrapper" style="background-color: #50647E">
-      <div class="container">
+    <div class="wrapper">
+      <div class="container" style="background-color: #333; box-shadow: 0 0 20px 3px #444;">
         <ng-include src="'alert/alert.tpl.html'"></ng-include>
         <div ui-view></div>
       </div>
