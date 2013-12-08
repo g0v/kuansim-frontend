@@ -47,20 +47,7 @@ angular.module('kuansim.user.profile', [
         Issue.getRelatedIssues($scope.followedIssues[i].id).success(successFn);
       }
 
-      console.log(recommendedIssues);
     });
   });
 
-})
-
-.config(function ($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('profile.view', {
-      url: '/view',
-      templateUrl: 'user/profile/profile_view.tpl.html',
-      title: 'User Profile - View',
-      controller: 'CurrentProfileCtrl'
-    });
-})
-
-;
+});
