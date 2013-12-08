@@ -22,6 +22,7 @@ describe('bookmark scenarios', function () {
     input('bmDateStr').enter(Date.now());
     input('bmLocation').enter('LAX, shooting, murder');
     input('bmDescription').enter("Federal officials charged the 23-year-old suspect in Friday's shooting rampage at Los Angeles International Airport");
+    input('bmIssues').enter("shooting,murder,federal,LA");
 
     // And I press create bookmark
     element('form.bookmark-form button', 'bookmark submit btn').click();
