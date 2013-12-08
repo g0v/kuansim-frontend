@@ -11,21 +11,24 @@ angular.module('kuansim.issue', [
     link: function (scope, element, attrs) {
       scope.$watch('timelineIssue', function (timelineIssue) {
         if (timelineIssue) {
-          console.log(">>>", timelineIssue);
           $('#issue').empty();
           $http.get('/collections/issues/' + timelineIssue).success(function (response) {
-            console.log("*>>>", response);
-            scope.sampleJson = response;
-            $timeout(function() {
-              createStoryJS({
-                  type:       'timeline',
-                  width:      '100%',
-                  height:     '700',
-                  source:     scope.sampleJson,
-                  embed_id:   'issue'
-              });
-            }, 0);
-            console.log("Running timelineJS");
+            if (response.timeline) {
+              scope.isNoBookmarkPresent = false;
+              scope.sampleJson = response;
+              $timeout(function() {
+                createStoryJS({
+                    type:       'timeline',
+                    width:      '100%',
+                    height:     '700',
+                    source:     scope.sampleJson,
+                    embed_id:   'issue'
+                });
+              }, 0);
+              console.log("Running timelineJS");
+            } else {
+              scope.isNoBookmarkPresent = true;
+            }
           });
         }
       });
@@ -56,7 +59,7 @@ angular.module('kuansim.issue', [
 .controller('IssueCtrl', function IssueCtrl($scope, $location, $http, Issue) {
 
   Issue.getIssues().success(function (response) {
-    $scope.issues = response;
+    $scope.issues = response.issues;
   });
 
   $scope.linkToEditForm = function(id) {
@@ -73,7 +76,7 @@ angular.module('kuansim.issue', [
   $scope.issueTitle = $stateParams.title;
   Issue.getIssues()
     .success(function(data, status) {
-      $scope.issues = data;
+      $scope.issues = data.issues;
     });
 })
 
