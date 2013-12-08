@@ -149,7 +149,8 @@ angular.module('kuansim.bookmark', [
         date_happened: $scope.bmDate.getTime(),
         url: $scope.bmUrl,
         location: $scope.bmLocation,
-        description: $scope.bmDescription
+        description: $scope.bmDescription,
+        issues: $scope.bmIssues
       };
       Bookmark.createBookmark(bookmark).success(callbacks.success).error(callbacks.error);
 
