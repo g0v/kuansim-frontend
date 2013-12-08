@@ -1,6 +1,5 @@
-<div style="margin-top: 30px" ng-controller="AlertCtrl">
-  <div ng-show="alert.hasAlert" class="alert" ng-class="{
-    'alert-success': alert.success, 'alert-danger': !alert.success}">
+<div style="margin-top: 30px" ng-controller="AlertCtrl" ng-show="alert.hasAlert">
+  <div class="alert" ng-class="{'alert-success': alert.success, 'alert-danger': !alert.success}">
     {{alert.message}}
   </div>
 </div>

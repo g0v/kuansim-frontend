@@ -70,7 +70,7 @@ angular.module('kuansim', [
       url: '/view',
       templateUrl: 'user/profile/profile_view.tpl.html',
       title: 'User Profile - View',
-      controller: 'CurrentProfileCtrl'
+      controller: 'CurrentProfileViewCtrl'
     });
 })
 .controller('AppCtrl', function AppCtrl($scope, $location) {

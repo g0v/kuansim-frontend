@@ -6,7 +6,7 @@ angular.module('kuansim.user.profile', [
 
   return {
     getFollowedIssues: function(userId) {
-      return $http.get('/users/uid/' + userId + '/issues');
+      return $http.get('/users/' + userId + '/issues');
     },
     getCurrentProfile: function() {
       return $http.get('/users/profile');
@@ -15,7 +15,7 @@ angular.module('kuansim.user.profile', [
 
 })
 
-.controller('CurrentProfileCtrl', function ($scope, $http, Alert, Profile, User, Issue) {
+.controller('CurrentProfileCtrl', function ($scope, Alert, Profile, User, Issue) {
 
   $scope.profile = {};
 
@@ -27,6 +27,10 @@ angular.module('kuansim.user.profile', [
     }
   });
 
+})
+
+.controller('CurrentProfileViewCtrl', function ($scope, Profile, User, Issue) {
+  
   /* Only get issues followed by current user once logged in */
   User.userReady().then(function() {
     Profile.getFollowedIssues(User.id).success(function (response) {
@@ -50,4 +54,7 @@ angular.module('kuansim.user.profile', [
     });
   });
 
-});
+})
+
+;
+

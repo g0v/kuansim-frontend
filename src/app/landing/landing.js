@@ -24,7 +24,7 @@ angular.module('kuansim.landing', [
 /**
  * And of course we define a controller for our route.
  */
-.controller('LandingCtrl', function LandingCtrl($scope, $timeout) {
+.controller('LandingCtrl', function LandingCtrl($scope, $timeout, Issue) {
 
   $scope.itemHovered = false;
   $scope.jumboHeads = ['select', 'arrange', 'petition', 'action', 'review'];
@@ -57,6 +57,11 @@ angular.module('kuansim.landing', [
   var capitalizeFirstLetter = function(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+
+  Issue.getPopularIssues().success(function (response) {
+    console.log(response);
+    $scope.popularIssues = response.issues;
+  });
 
 })
 
