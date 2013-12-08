@@ -43,7 +43,7 @@ angular.module('kuansim', [
       controller: 'IssueFormCtrl'
     })
     .state('issueView', {
-      url: '/issue/:id',
+      url: '/issue/:title',
       title: 'Kuansim View Issue',
       templateUrl: 'issue/issue_view.tpl.html',
       controller: 'IssueViewCtrl'

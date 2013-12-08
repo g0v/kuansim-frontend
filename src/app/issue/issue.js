@@ -14,6 +14,7 @@ angular.module('kuansim.issue', [
           console.log(">>>", timelineIssue);
           $('#issue').empty();
           $http.get('/collections/issues/' + timelineIssue).success(function (response) {
+            console.log("*>>>", response);
             scope.sampleJson = response;
             $timeout(function() {
               createStoryJS({
@@ -69,11 +70,10 @@ angular.module('kuansim.issue', [
 })
 
 .controller('IssueViewCtrl', function IssueViewCtrl($scope, $stateParams, Issue) {
+  $scope.issueTitle = $stateParams.title;
   Issue.getIssues()
     .success(function(data, status) {
       $scope.issues = data;
-      $scope.selectedIssue = $scope.issues[0];
-      $scope.selectedIssueId = $scope.selectedIssue.id;
     });
 })
 
