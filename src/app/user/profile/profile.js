@@ -51,7 +51,7 @@ angular.module('kuansim.user.profile', [
   User.userReady().then(function() {
     Profile.getFollowedIssues(User.id).success(function (response) {
 
-      $scope.followedIssues = response;
+      $scope.followedIssues = response.issues;
       var recommendedIssues = {};
 
       var successFn = function(response) {
