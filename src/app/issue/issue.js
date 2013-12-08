@@ -66,7 +66,7 @@ angular.module('kuansim.issue', [
 .controller('IssueCtrl', function IssueCtrl($scope, $location, $http, Issue, Alert) {
 
   Issue.getIssues().success(function (response) {
-    $scope.issues = response;
+    $scope.issues = response.issues;
   });
 
   $scope.linkToEditForm = function(id) {
