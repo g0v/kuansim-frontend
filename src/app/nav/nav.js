@@ -5,7 +5,7 @@ var navModule = angular.module('kuansim.nav', [
   'ngCookies'
 ])
 
-.controller('NavCtrl', function NavCtrl($scope, OAuth, $http, User, Alert) {
+.controller('NavCtrl', function NavCtrl($scope, $window, OAuth, $http, User, Alert) {
 
   $scope.isLoggingIn = false;
   $scope.currentUser = User;
@@ -23,6 +23,7 @@ var navModule = angular.module('kuansim.nav', [
         success(function(data) {
           $scope.isLoggingIn = false;
           User.logIn(data.email, data.name);
+          $window.location.reload();
         }).
         error(function(data) {
           $scope.isLoggingIn = false;
