@@ -58,11 +58,6 @@ angular.module('kuansim.landing', [
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  Issue.getPopularIssues().success(function (response) {
-    console.log(response);
-    $scope.popularIssues = response.issues;
-  });
-
 })
 
 ;
