@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-3" style="position: fixed; border-right: 1px solid #999; padding-right: 0; max-width: 250px">
+  <div class="col-lg-3" style="position: fixed; border-right: 1px solid #999; padding-right: 0; max-width: 250px; height: 100%; top: 60px;">
     <div class="sidebar-profile">
       <div style="width: 40%;">
         <img src="{{profile.image}}" style="margin-left: 10px; margin-bottom: 10px; max-width: 60px; float: left; border-radius: 2px;">
@@ -10,13 +10,19 @@
     </div>
     <hr style="width: 70%; clear: both;">
     <ul class="nav nav-pills nav-stacked" style="clear: left;">
-      <li class="active"><a href="">Profile</a></li>
-      <li><a href="">Events</a></li>
-      <li><a href="">Issues</a></li>
+      <li ng-class="{'active': isActive('/profile/view')}">
+        <a href="#/profile/view">Profile</a>
+      </li>
+      <li ng-class="{'active': isActive('/profile/bookmarks')}">
+        <a href="#/profile/bookmarks">My Bookmarks</a>
+      </li>
+      <li ng-class="{'active': isActive('/profile/issues')}">
+        <a href="#/profile/issues">My Issues</a>
+      </li>
     </ul>
   </div>
 
-  <div class="col-lg-offset-3 col-lg-9">
+  <div class="col-lg-offset-3 col-lg-9" style="margin-top: 20px;">
     <div ui-view></div>
   </div>
 </div>

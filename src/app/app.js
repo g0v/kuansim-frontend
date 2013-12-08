@@ -14,7 +14,7 @@ angular.module('kuansim', [
   'oauth'
 ])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $compileProvider) {
   $urlRouterProvider
     .when('', '/');  // This is a AngularUI router ambiguity, needs to be resolved
   $stateProvider
@@ -71,8 +71,24 @@ angular.module('kuansim', [
       templateUrl: 'user/profile/profile_view.tpl.html',
       title: 'User Profile - View',
       controller: 'CurrentProfileViewCtrl'
-    });
+    })
+    .state('profile.bookmarks', {
+      url: '/bookmarks',
+      templateUrl: 'user/profile/my_bookmarks.tpl.html',
+      title: 'User Profile - Bookmarks',
+      controller: 'CurrentProfileMyBookmarksCtrl'
+    })
+    .state('profile.issues', {
+      url: '/issues',
+      templateUrl: 'user/profile/my_issues.tpl.html',
+      title: 'User Profile - Issues',
+      controller: 'CurrentProfileMyIssuesCtrl'
+    })
+    ;
+
+    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
 })
+
 .controller('AppCtrl', function AppCtrl($scope, $location) {
 
 })
