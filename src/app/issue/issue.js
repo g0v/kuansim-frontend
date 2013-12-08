@@ -56,6 +56,9 @@ angular.module('kuansim.issue', [
     },
     getRelatedIssues: function(id) {
       return $http.get('/collections/issues/' + id + '/related');
+    },
+    getPopularIssues: function() {
+      return $http.get('/collections/issues/popular');
     }
   };
 })

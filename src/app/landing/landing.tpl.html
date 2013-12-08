@@ -1,23 +1,60 @@
-<div class="action-block">
+<div class="action-block" style="background-color: #333; box-shadow: 0 0 20px 3px #444;">
   <!-- <img src="assets/img/banner.jpg" alt="action" class="img-responsive"> -->
-  <div class="jumbotron" style="height: 250px;">
-    <h1>
-      <span class="glyphicon glyphicon-heart" ng-show="jumboHead == 'Kuansim'"></span>
-      {{jumboHead}}
-    </h1>
-    <p>{{jumboBody}}</p>
-  </div>
-  <div class="kuansim-banner-bg" style="margin-top: -50px;">
-    <div
-      class="kuansim-banner-icon-{{title}}"
-      ng-repeat="title in jumboHeads"
-      ng-mouseenter="jumboOnEnter(title)"
-      ng-mouseleave="jumboOnLeave()">
+  <div class="row" style="padding-left: 20px; padding-right: 20px; margin-bottom: 0;">
+    <div class="col-lg-12">
+      <div class="jumbotron" style="margin-bottom: 20px; border-top-right-radius: 0px; border-top-left-radius: 0px; height: 275px;">
+        <h1>
+          <span class="glyphicon glyphicon-heart" ng-show="jumboHead == 'Kuansim'"></span>
+          {{jumboHead}}
+        </h1>
+        <p>{{jumboBody}}</p>
+      </div>
     </div>
-<!--   	<div class="kuansim-banner-icon-select"></div>
-  	<div class="kuansim-banner-icon-arrange"></div>
-  	<div class="kuansim-banner-icon-petition"></div>
-  	<div class="kuansim-banner-icon-action"></div>
-  	<div class="kuansim-banner-icon-review"></div> -->
+  </div>
+
+  <div style="background-color: #eee; border-radius: 10px; margin-top: 0px; margin-right: 20px; margin-left: 20px;">
+    <div class="kuansim-banner-bg">
+      <div
+        class="kuansim-banner-icon-{{title}}"
+        ng-repeat="title in jumboHeads"
+        ng-mouseenter="jumboOnEnter(title)"
+        ng-mouseleave="jumboOnLeave()">
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-left: 20px; padding-right: 20px; margin-top: 20px;">
+    <div class="col-lg-6">
+      <div class="jumbotron" style="height: 275px;">
+        <h2>Timelines</h2>
+        <p>Chronological organization of the events associated with issues you care about.</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="jumbotron" style="height: 275px;">
+        <h2>Add Bookmarks from Anywhere</h2>
+        <p>Bookmark articles and web pages about current events.</p>
+      </div>
+    </div>
+
+<!--     <div class="col-lg-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Most Popular Issues</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="issue in popularIssues">
+              <td>{{issue.title}}</td>
+              <td>{{issue.description}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> -->
   </div>
 </div>
