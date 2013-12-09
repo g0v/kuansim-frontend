@@ -1,7 +1,19 @@
+.issues-header {
+  color: #eee;
+}
+
+.issues-tbl {
+  background-color: #eee;
+  color: #333;
+  border-radius: 5px;
+}
+
 .issues-tbl>tbody>tr {
 	cursor: pointer;
 }
 
 .issues-tbl>tbody>tr:hover {
-	background-color: #f0f0f0;
+	background-color: #888;
+  color: #eee;
+  border-radius: 5px;
 }

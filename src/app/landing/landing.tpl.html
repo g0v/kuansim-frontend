@@ -1,5 +1,16 @@
 <div class="landing-container">
   <!-- <img src="assets/img/banner.jpg" alt="action" class="img-responsive"> -->
+  <div class="kuansim-banner-container">
+    <div class="kuansim-banner-bg">
+      <div
+        class="kuansim-banner-icon-{{title}}"
+        ng-repeat="title in jumboHeads"
+        ng-mouseenter="jumboOnEnter(title)"
+        ng-mouseleave="jumboOnLeave()">
+      </div>
+    </div>
+  </div>
+  
   <div class="row main-row">
     <div class="col-lg-12">
       <div class="jumbotron">
@@ -8,17 +19,6 @@
           {{jumboHead}}
         </h1>
         <p>{{jumboBody}}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="kuansim-banner-container">
-    <div class="kuansim-banner-bg">
-      <div
-        class="kuansim-banner-icon-{{title}}"
-        ng-repeat="title in jumboHeads"
-        ng-mouseenter="jumboOnEnter(title)"
-        ng-mouseleave="jumboOnLeave()">
       </div>
     </div>
   </div>

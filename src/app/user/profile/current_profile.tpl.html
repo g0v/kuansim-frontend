@@ -1,15 +1,16 @@
 <div class="row">
-  <div class="col-lg-3" style="position: fixed; border-right: 1px solid #999; padding-right: 0; max-width: 250px; height: 100%; top: 60px;">
+  <div class="sidebar-profile-outer col-lg-3">
     <div class="sidebar-profile">
-      <div style="width: 40%;">
-        <img src="{{profile.image}}" style="margin-left: 10px; margin-bottom: 10px; max-width: 60px; float: left; border-radius: 2px;">
+      <div class="profile-image">
+        <img src="{{profile.image}}">
       </div>
-      <div style="float: left; width: 60%; padding-left: 10px;">
+      <div class="profile-name">
         <h5>{{profile.name}}</h5>
+        <h6>{{profile.email}}</h6>
       </div>
     </div>
-    <hr style="width: 70%; clear: both;">
-    <ul class="nav nav-pills nav-stacked" style="clear: left;">
+    <hr>
+    <ul class="nav nav-pills nav-stacked">
       <li ng-class="{'active': isActive('/profile/view')}">
         <a href="#/profile/view">Profile</a>
       </li>
@@ -22,7 +23,7 @@
     </ul>
   </div>
 
-  <div class="col-lg-offset-3 col-lg-9" style="margin-top: 20px;">
+  <div class="col-lg-offset-3 col-lg-9 profile-content">
     <div ui-view></div>
   </div>
 </div>

@@ -93,6 +93,12 @@ angular.module('kuansim', [
 
 })
 
+.filter('iif', function () {
+   return function(input, trueValue, falseValue) {
+        return input ? trueValue : falseValue;
+   };
+})
+
 .run(function ($rootScope, $state, OAuth, User, $http, Alert) {
   $rootScope.state = $state;
   OAuth.initialize('SGZsWy9SUN3ce4-sAMsgQNbB0fA');
