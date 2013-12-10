@@ -1,7 +1,9 @@
 <div class="row" style="margin-right: 20px; margin-top:">
   <div class="col-lg-4" ng-repeat="bookmark in myBookmarks" style="height: 280px; background-color: #eee; padding: 10px 15px 10px 15px; border-radius: 5px;">
-    <h4 style="color: #333">{{bookmark.title | iif : bookmark.title : bookmark.og.title}}</h4>
-    <hr style="border-top-color: #333; margin-top: 5px;">
-    <img class="img-responsive" src="{{bookmark.og.images[0]}}">
+    <a href="{{bookmark.url}}" style="display: block; text-decoration: none;">
+      <h4 style="color: #333">{{bookmark.title | iif : bookmark.title : bookmark.ogTitle}}</h4>
+      <hr style="border-top-color: #333; margin-top: 5px;">
+      <img class="img-responsive" src="{{bookmark.ogImage}}">
+    </a>
   </div>
 </div>

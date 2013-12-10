@@ -13,6 +13,9 @@ angular.module('kuansim.user.profile', [
     },
     getCurrentProfile: function() {
       return $http.get('/users/profile');
+    },
+    getRecommendedIssues: function() {
+      return $http.get('/users/issues/recommended');
     }
   };
 
@@ -59,23 +62,10 @@ angular.module('kuansim.user.profile', [
   /* Only get issues followed by current user once logged in */
   User.userReady().then(function() {
     Profile.getFollowedIssues(User.id).success(function (response) {
-
       $scope.followedIssues = response.issues;
-      var recommendedIssues = {};
-
-      var successFn = function(response) {
-        for (var j = 0; j < response.related.length; j++) {
-          var relatedIssue = JSON.parse(response.related[j]);
-          if (!recommendedIssues[relatedIssue.id]) {
-            recommendedIssues[relatedIssue.id] = relatedIssue;
-          }
-        }
-      };
-
-      for (var i = 0; i < $scope.followedIssues.length; i++) {
-        Issue.getRelatedIssues($scope.followedIssues[i].id).success(successFn);
-      }
-
+    });
+    Profile.getRecommendedIssues().success(function (response) {
+      $scope.recommendedIssues = response.recommended_issues;
     });
   });
 })

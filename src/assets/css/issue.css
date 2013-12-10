@@ -17,3 +17,11 @@
   color: #eee;
   border-radius: 5px;
 }
+
+.issues-tbl>tbody>tr>td>a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.issues-tbl>tbody>tr>td .btn {
+  background-color: #fff;
