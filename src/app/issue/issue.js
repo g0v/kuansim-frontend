@@ -13,6 +13,7 @@ angular.module('kuansim.issue', [
         if (timelineIssue) {
           $('#issue').empty();
           $http.get('/collections/issues/' + timelineIssue).success(function (response) {
+            console.log("timeline res: "+response);
             if (response.timeline) {
               scope.isNoBookmarkPresent = false;
               scope.sampleJson = response;
@@ -58,14 +59,11 @@ angular.module('kuansim.issue', [
         id: id
       });
     },
-<<<<<<< HEAD
-=======
     unfollowIssue: function(id) {
       return $http.post('/users/issues/unfollow', {
         id: id
       });
     },
->>>>>>> a5472baf8430a2c90a3d216d7e949276a7046a43
     getRelatedIssues: function(id) {
       return $http.get('/collections/issues/' + id + '/related');
     },
@@ -99,8 +97,6 @@ angular.module('kuansim.issue', [
     });
   };
 
-<<<<<<< HEAD
-=======
   $scope.unfollowIssue = function(issue) {
     Issue.unfollowIssue(issue.id).success(function (data) {
       if (data.success) {
@@ -111,7 +107,6 @@ angular.module('kuansim.issue', [
     });
   };
 
->>>>>>> a5472baf8430a2c90a3d216d7e949276a7046a43
 })
 
 .controller('IssueViewCtrl', function IssueViewCtrl($scope, $stateParams, Issue) {
