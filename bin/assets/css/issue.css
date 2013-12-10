@@ -1,0 +1,27 @@
+.issues-header {
+  color: #eee;
+}
+
+.issues-tbl {
+  background-color: #eee;
+  color: #333;
+  border-radius: 5px;
+}
+
+.issues-tbl>tbody>tr {
+	cursor: pointer;
+}
+
+.issues-tbl>tbody>tr:hover {
+	background-color: #888;
+  color: #eee;
+  border-radius: 5px;
+}
+
+.issues-tbl>tbody>tr>td>a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.issues-tbl>tbody>tr>td .btn {
+  background-color: #fff;
