@@ -11,20 +11,29 @@
     </thead>
     <tbody>
       <tr ng-repeat="issue in issues">
-        <td ng-click="linkToEditForm(issue.title)">{{issue.title}}</td>
-        <td ng-click="linkToEditForm(issue.title)">{{issue.description}}</td>
+        <td>{{issue.title}}</td>
+        <td>{{issue.description}}</td>
         <td>
           <a href="" ng-click="followIssue(issue)">
-            <span ng-hide="issue.isFollowed">
-              <span class="glyphicon glyphicon-eye-open"></span> Follow
+            <div class="btn btn-default" ng-hide="issue.isFollowed">
+              <span>
+                <span class="glyphicon glyphicon-eye-open"></span> Follow
+              </span>
+            </div>
+          </a>
+          <a href="" ng-click="unfollowIssue(issue)" ng-init="hovered = false">
+            <span ng-show="issue.isFollowed" ng-mouseover="hovered = true" ng-mouseleave="hovered = false">
+              <div class="btn btn-default" ng-hide="hovered">
+                <span><span class="glyphicon glyphicon-check"></span> Followed</span>
+              </div>
+              <div class="btn btn-default" ng-show="hovered">
+                <span><span class="glyphicon glyphicon-remove"></span> Unfollow</span>
+              </div>
             </span>
           </a>
-          <span ng-show="issue.isFollowed">
-            <span class="glyphicon glyphicon-check"></span> Followed
-          </span>
         </td>
         <td>
-          <a href="" ng-click="linkToEditForm(issue.title)">
+          <a href="" ng-click="linkToEditForm(issue.id)">
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </td>

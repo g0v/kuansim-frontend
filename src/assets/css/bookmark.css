@@ -4,11 +4,11 @@
   border-radius: 5px;
 }
 
-.table tr {
+.table tbody tr {
   cursor: pointer;
 }
 
-.table tr:hover {
+.table tbody tr:hover {
   background-color: #888;
   color: #eee;
   border-radius: 5px;
