@@ -30,11 +30,11 @@ angular.module('kuansim.landing', [
   $scope.isHovering = false;
   $scope.jumboHeads = ['select', 'arrange', 'petition', 'action', 'review'];
   $scope.jumboInfo = {
-    select: "Gather information related to different issues.",
-    arrange: "Arrange and organize the selected information as bookmarks.",
-    petition: "Find like-minded people.",
-    action: "Take action in the real world.",
-    review: "Review the course of an issue using timeline and track the current status of the issue."
+    select: "Gather all the information pertaining to an issue by creating bookmarks.",
+    arrange: "Arrange and organize all the bookmarks you’ve created by associating them with issues.",
+    petition: "See if other people have the same concerns as you.",
+    action: "Find people with the same concerns and take action in the real world.",
+    review: "Review and track the progression of an issue by using timelines."
   };
   $scope.jumboIcons = {
     kuansim: 'heart',

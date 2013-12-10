@@ -8,6 +8,9 @@ angular.module('kuansim.user.profile', [
     getFollowedIssues: function(userId) {
       return $http.get('/users/' + userId + '/issues');
     },
+    getCreatedBookmarks: function(userId) {
+      return $http.get('/users/' + userId + '/events');
+    },
     getCurrentProfile: function() {
       return $http.get('/users/profile');
     },
@@ -45,7 +48,13 @@ angular.module('kuansim.user.profile', [
 
 .controller('CurrentProfileMyBookmarksCtrl', function ($scope, Profile, User, Bookmark) {
 
-
+  User.userReady().then(function() {
+    Profile.getCreatedBookmarks(User.id).success(function (response) {
+      if (response.success) {
+        $scope.myBookmarks = response.events;
+      } /*should never fail to find user because always must be logged in*/
+    });
+  });
 
 })
 
