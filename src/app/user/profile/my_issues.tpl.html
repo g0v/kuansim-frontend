@@ -21,7 +21,20 @@
   <div class="col-lg-4">
     <div class="panel panel-primary">
       <div class="panel-heading">Recommended Issues</div>
-      <div class="panel-body"></div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="issue in recommendedIssues">
+            <td>{{issue.title}}</td>
+            <td>{{issue.description}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
