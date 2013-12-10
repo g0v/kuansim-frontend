@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="kuansim" ng-controller="AppCtrl">
+<html ng-app="kuansim" ng-controller="AppCtrl" style="height: 100%;">
   <head>
     <title ng-bind="state.current.title"></title>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
@@ -11,17 +11,18 @@
     <link rel="stylesheet" href="assets/css/social-buttons/zocial.css">
     <link rel="stylesheet" href="assets/css/issue.css">
     <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="assets/timeline/js/storyjs-embed.js"></script>
     <!-- compiled JavaScript -->
     <script type="text/javascript" src="assets/kuansim-frontend-0.0.1.js"></script>
     <script type="text/javascript" src="assets/js/oauth.js"></script>
   </head>
-  <body>
+  <body style="background-color: #50647E; height: 100%;">
     <div id="nav" ng-include="'nav/nav.tpl.html'"></div>
 
-    <div class="wrapper">
-      <div class="container">
+    <div class="wrapper" style="height: 100%;">
+      <div class="container" style="background-color: #333; box-shadow: 0 0 20px 3px #444; min-height: 100%;">
         <ng-include src="'alert/alert.tpl.html'"></ng-include>
         <div ui-view></div>
       </div>
