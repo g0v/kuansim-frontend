@@ -62,3 +62,7 @@
 .profile-content {
   margin-top: 20px;
 }
+
+.my-bookmark-squre > .col-lg-4 {
+  width: 30%;
+}
