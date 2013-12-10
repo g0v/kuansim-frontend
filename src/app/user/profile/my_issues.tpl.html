@@ -10,7 +10,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="issue in followedIssues" ng-click="linkToEditForm(issue.id)">
+          <tr ng-repeat="issue in followedIssues" ng-click="linkToEditForm(issue.title)">
             <td>{{issue.title}}</td>
             <td>{{issue.description}}</td>
           </tr>
@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="issue in recommendedIssues" ng-click="linkToEditForm(issue.id)">
+          <tr ng-repeat="issue in recommendedIssues" ng-click="linkToEditForm(issue.title)">
             <td>{{issue.title}}</td>
             <td>{{issue.description}}</td>
           </tr>

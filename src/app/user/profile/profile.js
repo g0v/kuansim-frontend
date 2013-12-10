@@ -60,8 +60,8 @@ angular.module('kuansim.user.profile', [
 
 .controller('CurrentProfileMyIssuesCtrl', function ($scope, $location, Profile, User, Issue) {
 
-  $scope.linkToEditForm = function(id) {
-    $location.path('issue/' + id);
+  $scope.linkToEditForm = function(title) {
+    $location.path('issue/' + title);
   };
 
   /* Only get issues followed by current user once logged in */

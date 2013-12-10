@@ -11,8 +11,8 @@
     </thead>
     <tbody>
       <tr ng-repeat="issue in issues">
-        <td>{{issue.title}}</td>
-        <td>{{issue.description}}</td>
+        <td ng-click="linkToEditForm(issue.title)">{{issue.title}}</td>
+        <td ng-click="linkToEditForm(issue.title)">{{issue.description}}</td>
         <td>
           <a href="" ng-click="followIssue(issue)">
             <div class="btn btn-default" ng-hide="issue.isFollowed">
@@ -33,7 +33,7 @@
           </a>
         </td>
         <td>
-          <a href="" ng-click="linkToEditForm(issue.id)">
+          <a href="" ng-click="linkToEditForm(issue.title)">
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </td>

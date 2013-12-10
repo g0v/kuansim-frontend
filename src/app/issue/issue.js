@@ -79,9 +79,9 @@ angular.module('kuansim.issue', [
     $scope.issues = response.issues;
   });
 
-  $scope.linkToEditForm = function(id) {
-    if (id) {
-      $location.path('issue/' + id);
+  $scope.linkToEditForm = function(title) {
+    if (title) {
+      $location.path('issue/' + title);
     } else {
       $location.path('issue/create');
     }
