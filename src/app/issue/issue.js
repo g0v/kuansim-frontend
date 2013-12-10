@@ -54,6 +54,11 @@ angular.module('kuansim.issue', [
         id: id
       });
     },
+    unfollowIssue: function(id) {
+      return $http.post('/users/issues/unfollow', {
+        id: id
+      });
+    },
     getRelatedIssues: function(id) {
       return $http.get('/collections/issues/' + id + '/related');
     },
@@ -81,6 +86,16 @@ angular.module('kuansim.issue', [
     Issue.followIssue(issue.id).success(function (data) {
       if (data.success) {
         issue.isFollowed = true;
+      } else {
+        Alert.setFromResponse(data);
+      }
+    });
+  };
+
+  $scope.unfollowIssue = function(issue) {
+    Issue.unfollowIssue(issue.id).success(function (data) {
+      if (data.success) {
+        issue.isFollowed = false;
       } else {
         Alert.setFromResponse(data);
       }
