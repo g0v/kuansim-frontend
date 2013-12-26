@@ -12,7 +12,7 @@ engines:
   npm: '1.1.x'
 scripts:
   prepublish: './node_modules/.bin/lsc -c package.json.ls karma.conf.js.ls'
-  start: './node_modules/.bin/brunch watch --server'
+  start: 'scripts/server.sh'
   test: 'karma start --single-run --browsers PhantomJS'
 dependencies: {}
 devDependencies:
