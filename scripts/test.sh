@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node_modules/karma/bin/karma start test/karma.conf.js
+(cd `dirname $0`/.. && node_modules/.bin/karma start --single-run --browsers PhantomJS)

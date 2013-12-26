@@ -15,7 +15,7 @@
   "scripts": {
     "prepublish": "./node_modules/.bin/lsc -c package.json.ls karma.conf.js.ls",
     "start": "scripts/server.sh",
-    "test": "karma start --single-run --browsers PhantomJS"
+    "test": "scripts/test.sh"
   },
   "dependencies": {},
   "devDependencies": {
