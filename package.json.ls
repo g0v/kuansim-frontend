@@ -11,13 +11,13 @@ engines:
   node: '0.8.x'
   npm: '1.1.x'
 scripts:
-  prepublish: './node_modules/.bin/lsc -c package.json.ls karma.conf.js.ls'
+  prepublish: './node_modules/.bin/lsc -c package.json.ls'
   start: 'scripts/server.sh'
   test: 'scripts/test.sh'
 dependencies: {}
 devDependencies:
-  karma: \~0.9.3
-  \karma-live-preprocessor : \~0.1.0
+  karma: \>=0.11.13
+  'karma-live-preprocessor': \>=0.2.2
   \karma-mocha : \~0.1.0
   LiveScript: \>=1.2.0
   brunch: '1.5.x'

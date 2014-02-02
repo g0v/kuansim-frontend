@@ -11,7 +11,7 @@ module.exports = (config) ->
         ...
 
     files:
-      * \test/unit/app/*.ls
+      * \unit/app/*.ls
         ...
 
     exclude:
