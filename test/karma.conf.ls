@@ -10,6 +10,11 @@ module.exports = (config) ->
       * \mocha
         ...
 
+    plugins:
+      * \karma-live-preprocessor
+      * \karma-mocha
+      * \karma-phantomjs-launcher
+
     files:
       * \unit/app/*.ls
         ...
