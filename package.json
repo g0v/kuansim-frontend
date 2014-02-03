@@ -19,20 +19,20 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "auto-reload-brunch": "1.5.x",
+    "brunch": "1.5.x",
+    "clean-css-brunch": "1.5.x",
+    "css-brunch": "1.5.x",
+    "jade-brunch": "1.4.x",
+    "javascript-brunch": "1.5.x",
     "karma": ">=0.11.13",
     "karma-live-preprocessor": ">=0.2.2",
     "karma-mocha": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.2",
     "LiveScript": ">=1.2.0",
-    "brunch": "1.5.x",
-    "javascript-brunch": "1.5.x",
     "LiveScript-brunch": "1.5.x",
-    "css-brunch": "1.5.x",
     "sass-brunch": "1.5.x",
-    "jade-brunch": "1.4.x",
     "static-jade-brunch": ">= 1.4.0 <= 1.4.5 || >= 1.4.8 < 1.5",
-    "auto-reload-brunch": "1.5.x",
-    "uglify-js-brunch": "1.3.x",
-    "clean-css-brunch": "1.5.x"
+    "uglify-js-brunch": "1.3.x"
   }
 }
