@@ -28,7 +28,7 @@ devDependencies:
   'karma-phantomjs-launcher' : '~0.1.2'
   'LiveScript': '>=1.2.0'
   'LiveScript-brunch': '1.5.x'
-  'protractor': 'git://github.com/czchen/protractor#feature/ls_conf'
+  'protractor': '>=0.18.0'
   'sass-brunch': '1.5.x'
   'static-jade-brunch': '>= 1.4.0 <= 1.4.5 || >= 1.4.8 < 1.5'
   'uglify-js-brunch': '1.3.x'
