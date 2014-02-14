@@ -2,7 +2,7 @@ require! gulp
 require! 'gulp-exec'
 {protractor, webdriver} = require 'gulp-protractor'
 
-gulp.task 'test' <[test:karma test:protractor]> !->
+gulp.task 'test' <[test:karma]> !->
 
 gulp.task 'test:karma' !->
   gulp.src 'package.json'
