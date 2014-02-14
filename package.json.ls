@@ -13,13 +13,15 @@ engines:
 scripts:
   prepublish: './node_modules/.bin/lsc -c package.json.ls'
   start: 'scripts/server.sh'
-  test: 'scripts/test.sh'
+  test: 'gulp --require LiveScript test'
 dependencies: {}
 devDependencies:
   'auto-reload-brunch': '1.5.x'
   'brunch': '1.5.x'
   'clean-css-brunch': '1.5.x'
   'css-brunch': '1.5.x'
+  'gulp': '>= 3.5.2'
+  'gulp-exec': '>= 1.0.4'
   'jade-brunch': '1.4.x'
   'javascript-brunch': '1.5.x'
   'karma': '>=0.11.13'
