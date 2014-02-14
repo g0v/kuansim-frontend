@@ -1,8 +1,8 @@
 # Kuansim-frontend
 *   master [![Build Status](https://travis-ci.org/g0v/kuansim-frontend.png?branch=master)](https://travis-ci.org/g0v/kuansim-frontend)
 *   develop [![Build Status](https://travis-ci.org/g0v/kuansim-frontend.png?branch=develop)](https://travis-ci.org/g0v/kuansim-frontend)
-
-- [How to join](https://g0v.hackpad.com/--1OaXIxVVPSd)
+*   [![Dependency Status](https://gemnasium.com/g0v/kuansim-frontend.png)](https://gemnasium.com/g0v/kuansim-frontend)
+*   [How to join](https://g0v.hackpad.com/--1OaXIxVVPSd)
 
 # Branch Rules
 See [git-flow cheatsheet](http://danielkummer.github.io/git-flow-cheatsheet/)
@@ -35,5 +35,5 @@ $ ./script/server.sh
 
 # See also
 - [Brunch structure README](https://github.com/g0v/kuansim-frontend/blob/master/README_brunch.md)
-- Project site: http://hack.g0v.tw/kuansim
+- Project site: <http://hack.g0v.tw/kuansim>
 - Bug report or feedback here
