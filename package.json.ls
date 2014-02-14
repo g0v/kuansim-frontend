@@ -22,6 +22,8 @@ devDependencies:
   'css-brunch': '1.5.x'
   'gulp': '>= 3.5.2'
   'gulp-exec': '>= 1.0.4'
+  'gulp-protractor': '>= 0.0.4'
+  'gulp-util': '>=2.2.14'
   'jade-brunch': '1.4.x'
   'javascript-brunch': '1.5.x'
   'karma': '>=0.11.13'
