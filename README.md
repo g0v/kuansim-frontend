@@ -30,7 +30,7 @@ $ make import
 # Start the server
 ```
 $ npm i
-$ ./script/server.sh
+$ ./scripts/server.sh
 ```
 
 # See also
